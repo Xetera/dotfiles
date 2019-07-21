@@ -1,9 +1,15 @@
+DavidAnson.vscode-markdownlint
+dbaeumer.vscode-eslint
+eamodio.gitlens
 EditorConfig.EditorConfig
 justusadam.language-haskell
 mjmcloug.vscode-elixir
 ms-python.python
+streetsidesoftware.code-spell-checker
 UCL.haskelly
 vscode-icons-team.vscode-icons
 vscodevim.vim
 vscoss.vscode-ansible
+WallabyJs.quokka-vscode
 wholroyd.jinja
+wix.vscode-import-cost
