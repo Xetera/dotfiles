@@ -2,7 +2,7 @@
   become: true
   hosts: local
   pre_tasks:
-    - name: 
+    - name: Get the docker repsitory
       apt_repository:
         repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic test
         state: present
@@ -10,7 +10,13 @@
       apt:
         upgrade: yes
         update_cache: yes
+      ignore_errors: yes
       tags: ['update']
+    - name: Install utility commands
+      apt:
+        name: 
+          - curl
+          - fonts-powerline
   roles:
     - role: git
       tags: ['git']
@@ -20,8 +26,12 @@
       tags: ['bat']
     - role: keybase
       tags: ['keybase']
+    - role: screenshot
+      tags: ['screenshot']
     - role: node
       tags: ['node']
+    - role: python
+      tags: ['python']
     - role: haskell
       tags: ['haskell']
     - role: vscode

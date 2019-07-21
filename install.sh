@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
 
-echo "Installing ansible..."
+echo "[.files] Installing ansible..."
 sudo apt install ansible
 
-echo "Installing ansible dependencies"
+echo "[.files] Installing ansible dependencies"
 ansible-galaxy install -r requirements.yml
 
-ansible-playbook -i ~/.dotfiles/hosts ~/.dotfiles/setup.yml
+if [ -s "vault-pass" ]; then
+  echo "[.files] Password file found, using vault pass..."
+  ansible-playbook -i ~/.dotfiles/hosts ~/.dotfiles/setup.yml --vault-password-file vault-pass
+else
+  echo "[.files] Password file NOT found, not using encryption"
+  ansible-playbook -i ~/.dotfiles/hosts ~/.dotfiles/setup.yml
+fi

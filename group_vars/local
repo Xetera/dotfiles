@@ -3,7 +3,8 @@ dotfiles_home: "{{ dotfiles_user_home }}/.dotfiles"
 
 home: "{{ lookup('env', 'HOME') }}"
 full_name: Xetera
-user_name: xetera
+
+user: xetera
 
 
 docker__channel: ["stable"]

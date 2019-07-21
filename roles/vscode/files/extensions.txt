@@ -1,0 +1,9 @@
+EditorConfig.EditorConfig
+justusadam.language-haskell
+mjmcloug.vscode-elixir
+ms-python.python
+UCL.haskelly
+vscode-icons-team.vscode-icons
+vscodevim.vim
+vscoss.vscode-ansible
+wholroyd.jinja

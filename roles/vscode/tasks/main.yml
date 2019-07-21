@@ -16,3 +16,10 @@
     force: yes
     state: link
     follow: no
+
+- name: Install extensions
+  script: "sync-extensions.py install"
+  args:
+    chdir: "{{ role_path }}/files"
+  # become: no
+  become_user: "{{ user }}"

@@ -2,3 +2,8 @@
   apt:
     name: haskell-platform
     state: present
+
+- name: Install stack
+  apt:
+    name: haskell-stack
+    state: present

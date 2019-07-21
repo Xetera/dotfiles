@@ -1,0 +1,7 @@
+- name: Add python repository
+  apt_repository:
+    repo: ppa:deadsnakes/ppa
+
+- name: Update new packages
+  apt:
+    name: python3.7

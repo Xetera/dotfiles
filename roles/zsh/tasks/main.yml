@@ -17,12 +17,12 @@
 - name: Download oh-my-zsh
   get_url:
     url: https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
-    dest: "{{ zsh_installer_location }}"
+    dest: "{{ zsh.installer_location }}"
     force: no
   when: zshrc.stat.exists == False
 
 - name: Install oh-my-zsh
-  script: "{{ zsh_installer_location }}"
+  script: "{{ zsh.installer_location }}"
   become: yes
   when: zshrc.stat.exists == False
 
@@ -35,7 +35,24 @@
 - name: Symlink spaceship theme
   file:
     src: "{{ spaceship_dest }}/spaceship.zsh-theme"
-    dest: "{{ zsh_dir }}/themes/spaceship.zsh-theme"
+    dest: "{{ zsh.dir }}/themes/spaceship.zsh-theme"
     state: link
     force: yes
     follow: no
+
+- name: Download autosuggestions
+  git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions
+    dest: "{{ autosuggestions_dest }}"
+    clone: yes
+
+- name: Download syntax highlighting
+  git:
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest: "{{ syntax_highlighting_dest }}"
+    clone: yes
+
+- name: Copy .zshrc
+  template:
+    src: ".zshrc"
+    dest: "{{ home }}/.zshrc"

@@ -1,3 +1,9 @@
-zsh_installer_location: /tmp/zsh-installer.sh
-zsh_dir: "{{home}}/.oh-my-zsh"
-spaceship_dest: "{{home}}/spaceship.zsh-theme"
+zsh:
+  installer_location: /tmp/zsh-installer.sh
+  dir: "{{ home }}/.oh-my-zsh"
+  plugin_dir: "{{ home }}/.zsh/plugins"
+  theme_name: spaceship
+
+spaceship_dest: "{{ zsh.plugin_dir }}/spaceship"
+autosuggestions_dest: "{{ zsh.plugin_dir }}/autosuggestions."
+syntax_highlighting_dest: "{{ zsh.plugin_dir }}/syntax_highlighting"

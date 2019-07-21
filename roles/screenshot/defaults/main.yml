@@ -1,6 +1,7 @@
 screenshot_dest: "{{ home }}/screenshot"
 bunnycdn_username: xetera
-bunnycdn_storage: hifumistorage
+bunnycdn_storage: storage.bunnycdn.com
+bunnycdn_redirect_url: https://i.love.miki.ai
 bunnycdn_password: !vault |
   $ANSIBLE_VAULT;1.1;AES256
   35363065373230666266626366386166366562336664373939386566393339306439326565636563

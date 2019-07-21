@@ -1,8 +1,25 @@
+- name: Install flameshot
+  apt:
+    name: flameshot
+    state: present
+
+- name: Install xclip
+  apt:
+    name: xclip
+    state: present
+
+- name: Check if screenshot repo exists
+  stat:
+    path: "{{ screenshot_dest }}"
+  register: is_screenshot_installed
+
 - name: Pull screenshot repo
   git:
     repo: https://github.com/xetera/ftp-uploader.git
     dest: "{{ screenshot_dest }}"
+    force: no
     clone: yes
+  when: is_screenshot_installed == False
   
 - name: Set screenshot config
   template:
