@@ -1,0 +1,36 @@
+- name: Download nvm install script
+  get_url:
+    url: https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh
+    dest: "{{ nvm_install_location }}"
+
+- name: Run nvm install script
+  script: "{{ nvm_install_location }}"
+  args:
+    creates: "{{ home }}/.nvm/nvm.sh"
+
+- name: Check if nvm is already sourced
+  shell: command -v nvm >/dev/null 2>&1
+  register: nvm_exists
+  ignore_errors: yes
+  changed_when: "nvm_exists == False"
+
+- name: Run nvm init script
+  script: "{{ nvm_dir }}/nvm.sh"
+  when: nvm_exists.changed
+
+- name: Run nvm autocomplete script
+  script: "{{ nvm_dir }}/bash_completion"
+  when: nvm_exists.changed
+
+- name: "Install Node {{ node_version }}"
+  shell: "source {{ nvm_dir }}/nvm.sh && nvm install {{ node_version }}"
+  args:
+    creates: "{{ nvm_bin_dir }}"
+
+- name: Install global packages
+  npm:
+    name: "{{ item }}"
+    global: yes
+  with_items: "{{ global_node_packages }}"
+  environment:
+    PATH: "{{ nvm_bin_dir }}:{{ ansible_env.PATH }}"

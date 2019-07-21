@@ -1,0 +1,4 @@
+bat_release_url: https://github.com/sharkdp/bat/releases/download
+bat_version: "0.11.0"
+bat_dpkg_file: "bat_{{bat_version}}_amd64.deb"
+bat_release_version: "v{{bat_version}}"

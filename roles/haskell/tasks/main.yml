@@ -1,0 +1,4 @@
+- name: Install haskell platform
+  apt:
+    name: haskell-platform
+    state: present

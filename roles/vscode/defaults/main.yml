@@ -1,0 +1,3 @@
+vscode_install_location: /tmp/vscode-installer.deb
+
+vscode_settings_location: "{{ home }}/.config/Code/User"

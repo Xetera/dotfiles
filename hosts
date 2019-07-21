@@ -1,0 +1,8 @@
+[local]
+localhost
+
+[local:vars]
+ansible_connection=local
+
+[defaults]
+retry_files_enabled=False

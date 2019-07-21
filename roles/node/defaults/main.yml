@@ -1,0 +1,7 @@
+global_node_packages:
+  - eslint
+  - typescript
+node_version: "10.16.0"
+nvm_install_location: /tmp/nvm-installer.sh
+nvm_dir: "{{ home }}/.nvm"
+nvm_bin_dir: "{{ nvm_dir }}/versions/node/v{{ node_version }}/bin"

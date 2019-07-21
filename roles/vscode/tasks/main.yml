@@ -1,0 +1,18 @@
+- name: Check if vscode is installed
+  shell: command -v code >/dev/null 2>&1
+  register: vscode_exists
+  ignore_errors: yes
+  changed_when: "vscode_exists == 0"
+
+- name: Install vscode
+  import_tasks: installer.yml
+  when: vscode_exists is failed
+
+- name: Link vscode settings
+  file:
+    src: "{{ role_path }}/files/settings.json"
+    dest: "{{ vscode_settings_location }}/settings.json"
+    backup: yes
+    force: yes
+    state: link
+    follow: no

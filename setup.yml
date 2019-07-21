@@ -1,0 +1,16 @@
+- name: Running all configured dotfiles
+  hosts: local
+  roles:
+    - role: git
+      tags: ['git']
+    - role: zsh
+      tags: ['zsh']
+    - role: bat
+      tags: ['bat']
+    - role: node
+      tags: ['node']
+    - role: haskell
+      tags: ['haskell']
+    - role: vscode
+      tags: ['vscode']
+

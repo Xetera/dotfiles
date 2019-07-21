@@ -1,0 +1,3 @@
+zsh_installer_location: /tmp/zsh-installer.sh
+zsh_dir: "{{home}}/.oh-my-zsh"
+spaceship_dest: "{{home}}/spaceship.zsh-theme"
