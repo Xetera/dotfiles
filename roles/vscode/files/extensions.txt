@@ -2,6 +2,7 @@ DavidAnson.vscode-markdownlint
 dbaeumer.vscode-eslint
 eamodio.gitlens
 EditorConfig.EditorConfig
+Equinusocio.vsc-material-theme
 justusadam.language-haskell
 mjmcloug.vscode-elixir
 ms-python.python
