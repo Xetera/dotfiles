@@ -1,1 +1,10 @@
-# Add the screenshot module here
+- name: Pull screenshot repo
+  git:
+    repo: https://github.com/xetera/ftp-uploader.git
+    dest: "{{ screenshot_dest }}"
+    clone: yes
+  
+- name: Set screenshot config
+  template:
+    src: config.j2
+    dest: "{{ screenshot_dest }}/config.sh"
