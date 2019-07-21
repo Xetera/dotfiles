@@ -1,5 +1,9 @@
 dotfiles_user_home: "{{ '~' | expanduser }}"
-dotfiles_home: "{{dotfiles_user_home}}/.dotfiles"
+dotfiles_home: "{{ dotfiles_user_home }}/.dotfiles"
 
 home: "{{ lookup('env', 'HOME') }}"
 full_name: Xetera
+user_name: xetera
+
+
+docker__channel: ["stable"]

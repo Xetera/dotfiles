@@ -1,5 +1,16 @@
 - name: Running all configured dotfiles
+  become: true
   hosts: local
+  pre_tasks:
+    - name: 
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic test
+        state: present
+    - name: Update machine
+      apt:
+        upgrade: yes
+        update_cache: yes
+      tags: ['update']
   roles:
     - role: git
       tags: ['git']
@@ -13,4 +24,6 @@
       tags: ['haskell']
     - role: vscode
       tags: ['vscode']
+    - role: nickjj.docker
+      tags: ['docker']
 
