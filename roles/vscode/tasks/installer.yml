@@ -1,10 +1,4 @@
-- name: Download vscode
-  get_url:
-    url: https://go.microsoft.com/fwlink/?LinkID=760868
-    dest: "{{ vscode_install_location }}"
-    force: no
-
 - name: Install vscode
   apt:
-    deb: "{{ vscode_install_location }}"
+    deb: https://go.microsoft.com/fwlink/?LinkID=760868
   become: yes

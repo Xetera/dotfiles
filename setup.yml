@@ -18,6 +18,8 @@
       tags: ['zsh']
     - role: bat
       tags: ['bat']
+    - role: keybase
+      tags: ['keybase']
     - role: node
       tags: ['node']
     - role: haskell
