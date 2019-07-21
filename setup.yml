@@ -19,23 +19,23 @@
           - fonts-powerline
   roles:
     - role: git
-      tags: ['git']
+      tags: ['git', 'vps']
     - role: zsh
-      tags: ['zsh']
+      tags: ['zsh', 'vps']
     - role: bat
-      tags: ['bat']
+      tags: ['bat', 'vps']
     - role: keybase
       tags: ['keybase']
     - role: screenshot
       tags: ['screenshot']
     - role: node
-      tags: ['node']
+      tags: ['node', 'vps']
     - role: python
-      tags: ['python']
+      tags: ['python', 'vps']
     - role: haskell
       tags: ['haskell']
     - role: vscode
       tags: ['vscode']
     - role: nickjj.docker
-      tags: ['docker']
+      tags: ['docker', 'vps']
 

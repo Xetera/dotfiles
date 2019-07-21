@@ -8,8 +8,8 @@ ansible-galaxy install -r requirements.yml
 
 if [ -s "vault-pass" ]; then
   echo "[.files] Password file found, using vault pass..."
-  ansible-playbook -i ~/.dotfiles/hosts ~/.dotfiles/setup.yml --vault-password-file vault-pass
+  ansible-playbook -i hosts setup.yml --vault-password-file vault-pass
 else
   echo "[.files] Password file NOT found, not using encryption"
-  ansible-playbook -i ~/.dotfiles/hosts ~/.dotfiles/setup.yml
+  ansible-playbook -i hosts setup.yml
 fi
