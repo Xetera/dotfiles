@@ -1,4 +1,4 @@
-version: 2.0
+version: 2.1
 jobs:
   build:
     docker:
@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run: sudo ./install.sh
 workflows:
-  version: 2.0
+  version: 2.1
   dotfiles:
     jobs:
       - build
