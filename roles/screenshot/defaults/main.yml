@@ -1,5 +1,5 @@
 screenshot_dest: "{{ home }}/screenshot"
-bunnycdn_username: xetera
+bunnycdn_username: hifumistorage
 bunnycdn_storage: storage.bunnycdn.com
 bunnycdn_redirect_url: https://i.love.miki.ai
 bunnycdn_password: !vault |
