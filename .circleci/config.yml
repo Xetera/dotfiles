@@ -1,0 +1,13 @@
+version: 2.0
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6
+    steps:
+      - checkout
+      - run: sudo ./install.sh
+workflows:
+  version: 2.0
+  dotfiles:
+    jobs:
+      - build
