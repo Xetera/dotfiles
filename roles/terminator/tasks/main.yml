@@ -1,0 +1,22 @@
+- name: Check Hyper installation
+  stat:
+    path: "{{ terminator_config_dir }}"
+  register: terminator
+  
+- name: Install Terminator
+  apt:
+    name: terminator
+  when: terminator.stat.exists == False
+
+- name: link config
+  file:
+    src: "{{ role_path }}/files/config"
+    dest: "{{ terminator_config_dir }}"
+    backup: yes
+    force: yes
+    state: link
+    follow: no
+
+- name: Set as default terminal
+  shell: update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/terminator 50
+  become: yes

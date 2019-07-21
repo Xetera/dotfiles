@@ -17,6 +17,7 @@
         name: 
           - curl
           - fonts-powerline
+          - htop
   roles:
     - role: git
       tags: ['git', 'vps']
@@ -36,6 +37,8 @@
       tags: ['haskell']
     - role: vscode
       tags: ['vscode']
+    - role: terminator
+      tags: ['terminator']
     - role: nickjj.docker
       tags: ['docker', 'vps']
 

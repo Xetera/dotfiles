@@ -1,0 +1,29 @@
+[global_config]
+  handle_size = 6
+  borderless = True
+  extra_styling = False
+  title_use_system_font = False
+  title_font = Menlo for Powerline 12
+[keybindings]
+[profiles]
+  [[default]]
+    icon_bell = False
+    background_color = "#060606"
+    background_darkness = 0.93
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    font = Fira Code Bold 14
+    foreground_color = "#ffffff"
+    show_titlebar = False
+    scrollbar_position = hidden
+    palette = "#000000:#cd0000:#00cd00:#cdcd00:#0000cd:#cd00cd:#00cdcd:#faebd7:#404040:#ff0000:#00ff00:#ffff00:#0000ff:#ff00ff:#00ffff:#ffffff"
+    use_system_font = False
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]

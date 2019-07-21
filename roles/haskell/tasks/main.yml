@@ -7,3 +7,21 @@
   apt:
     name: haskell-stack
     state: present
+
+- name: Configure ghci
+  file:
+    src: "{{ role_path }}/files/.ghci"
+    dest: "{{ home }}/.ghci"
+    backup: yes
+    force: yes
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    state: link
+    follow: no
+
+# For some reason Ansible doesn't let you
+# do this in one command, interesting
+- name: Remove extra .ghci permissions 
+  file:
+    mode: "go-w"
+    path: "{{ home }}/.ghci"

@@ -1,0 +1,1 @@
+terminator_config_dir: "{{ home }}/.config/terminator/config"
