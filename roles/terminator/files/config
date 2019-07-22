@@ -1,6 +1,5 @@
 [global_config]
   handle_size = 6
-  borderless = True
   extra_styling = False
   title_use_system_font = False
   title_font = Menlo for Powerline 12
