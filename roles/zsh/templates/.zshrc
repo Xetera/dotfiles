@@ -68,9 +68,13 @@ ZSH_THEME="{{ zsh.theme_name }}"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git command-not-found cabal node npm stack)
+plugins=(git command-not-found cabal node npm stack sudo docker)
 
 source $ZSH/oh-my-zsh.sh
+
+SPACESHIP_DOCKER_VERBOSE=true
+SPACESHIP_TIME_SHOW=true
+SPACESHIP_PROMPT_ADD_NEWLINE=false
 
 # User configuration
 
