@@ -6,6 +6,7 @@
 [keybindings]
 [profiles]
   [[default]]
+    allow_bold = False
     icon_bell = False
     background_color = "#060606"
     background_darkness = 0.93
@@ -17,6 +18,7 @@
     scrollbar_position = hidden
     palette = "#000000:#cd0000:#00cd00:#cdcd00:#0000cd:#cd00cd:#00cdcd:#faebd7:#404040:#ff0000:#00ff00:#ffff00:#0000ff:#ff00ff:#00ffff:#ffffff"
     use_system_font = False
+    copy_on_selection = True
 [layouts]
   [[default]]
     [[[window0]]]

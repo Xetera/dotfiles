@@ -1,8 +1,31 @@
 {
     "workbench.iconTheme": "vscode-icons",
-    "editor.fontFamily": "'Menlo for Powerline', 'Fira Code Retina', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-    "editor.fontSize": 16,
+    "editor.fontFamily": "'Overpass Mono', 'Monaco', 'Fira Code Retina', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontSize": 18,
     "editor.tabSize": 2,
     "editor.formatOnSave": true,
-    "workbench.colorTheme": "Material Theme Ocean"
+    "workbench.colorTheme": "Noctis Uva",
+    "window.zoomLevel": 1,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "cSpell.userWords": [
+        "fansite",
+        "frontmatter",
+        "mixins"
+    ],
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "prettier.eslintIntegration": true,
+    "eslint.autoFixOnSave": true,
+    "editor.lineHeight": 32,
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }
