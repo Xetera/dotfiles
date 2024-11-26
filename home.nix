@@ -5,6 +5,9 @@ in
 {
   home = {
     stateVersion = "24.05";
+    sessionVariables = {
+      EDITOR = "nvim";
+    };
     packages = with pkgs; [
       ## tooling ##
       eza
@@ -19,6 +22,12 @@ in
       delta
       docker
       hexyl
+      yt-dlp
+      trippy
+      # binsider -> broken?
+
+      ## hacking ##
+      # apkleaks
 
       ## productivity ##
       lazygit
@@ -29,8 +38,9 @@ in
       jless
 
       ## network ##
-      # wireshark -> installed in homebrew
+      wireshark # -> installed in homebrew
       nmap
+      tcpreplay
 
       ## VA ##
       ffmpeg
@@ -45,6 +55,7 @@ in
       neovim
       alacritty
       antidote
+      pnpm
       # zed-editor broken for now
 
       # misc
@@ -59,13 +70,15 @@ in
       syntaxHighlighting.enable = true;
       autosuggestion.enable = true;
       shellAliases = {
-        ls = "eza --icons";
+        ls = "eza --icons always $1";
         vim = "nvim";
         lg = "lazygit";
         # https://github.com/nix-community/home-manager/issues/1088
         reloadzsh = "rm -f ~/.zshrc.zwc && zcompile ~/.zshrc";
         editc = "nvim ~/.config/nix";
         update = "nixfmt ~/.config/nix/flake.nix && darwin-rebuild switch --flake ~/.config/nix#tim";
+        dlp = "yt-dlp --no-mtime";
+        psql = "nix shell nixpkgs#postgresql --command psql";
       };
       initExtra = ''
         # make sure homebrew is in path
@@ -75,6 +88,14 @@ in
 
         # needed by unixorn/fzf-zsh-plugin
         source <(fzf --zsh)
+
+        # I don't want to use nix to manage node but I use nix to use manage .zshrc
+        # so this is necessary
+        export PNPM_HOME="/Users/xetera/Library/pnpm"
+        case ":$PATH:" in
+          *":$PNPM_HOME:"*) ;;
+          *) export PATH="$PNPM_HOME:$PATH" ;;
+        esac
       '';
 
       antidote = {
