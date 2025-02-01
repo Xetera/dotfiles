@@ -13,7 +13,6 @@ in
       eza
       bat
       tokei
-      xsv
       fd
       ripgrep
       semgrep
@@ -24,6 +23,7 @@ in
       hexyl
       yt-dlp
       trippy
+      stripe-cli
       # binsider -> broken?
 
       ## hacking ##
@@ -36,6 +36,8 @@ in
       btop
       jq
       jless
+      postgresql
+      numbat
 
       ## network ##
       wireshark # -> installed in homebrew
@@ -53,9 +55,10 @@ in
       ## developer setup ##
       git
       neovim
-      alacritty
       antidote
       pnpm
+      elixir
+      zig
       # zed-editor broken for now
 
       # misc
@@ -96,6 +99,12 @@ in
           *":$PNPM_HOME:"*) ;;
           *) export PATH="$PNPM_HOME:$PATH" ;;
         esac
+        export ANDROID_HOME="/Users/xetera/Library/Android/sdk"
+        export PATH="$PATH:/Users/xetera/.ghcup/hls/2.9.0.1/bin"
+        export PATH="$PATH:/Users/xetera/.cargo/bin"
+        source /Users/xetera/.ghcup/env
+        export BUN_INSTALL="$HOME/.bun"
+        export PATH="$BUN_INSTALL/bin:$PATH"
       '';
 
       antidote = {
@@ -117,15 +126,26 @@ in
             ${lib.toLower gitName} = "#11aaff";
           };
           theme = {
-            selectedLineBgColor = ["green" "bold"];
+            selectedLineBgColor = ["black" "bold"];
           };
         };
+        git.overrideGpg = true;
         git.paging = {
           colorArg = "always";
           pager = "${pkgs.delta}/bin/delta --paging=never --hyperlinks --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
         };
       };
     };
+    # ghostty = {
+    #   enable = true;
+    #   enableZshIntegration = true;
+    #   installVimSyntax = true;
+    #   settings = {
+    #     window-padding-y = 0;
+    #     window-padding-x = 0;
+    #     macos-titlebar-style = "native";
+    #   };
+    # };
     alacritty = {
       enable = true;
       settings = {
