@@ -58,6 +58,7 @@ in
       antidote
       pnpm
       elixir
+      erlang
       zig
       # zed-editor broken for now
 
