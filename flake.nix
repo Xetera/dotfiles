@@ -21,6 +21,7 @@
   inputs = {
     nixpkgs-darwin.url = "github:NixOS/nixpkgs?rev=d2faa1bbca1b1e4962ce7373c5b0879e5b12cef2";
     # nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
+    _1password-shell-plugins.url = "github:1Password/shell-plugins";
     darwin = {
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs-darwin";
@@ -67,7 +68,7 @@
             home-manager = {
               # useGlobalPkgs = true;
               # useUserPackages = true;
-              # extraSpecialArgs = specialArgs;
+              extraSpecialArgs = { inherit inputs; };
               users.${username} = import ./home.nix;
             };
           }

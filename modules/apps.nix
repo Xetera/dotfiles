@@ -47,14 +47,23 @@
       # "homebrew/services"
     ];
 
+    masApps = {
+      "AmneziaVPN" = 1600529900;
+    };
+
     # `brew install`
     # TODO Feel free to add your favorite apps here.
     brews = [
+      # k8s
+      "kubectl"
+      "helm"
+      "mas"
     ];
 
     # `brew install --cask`
     # TODO Feel free to add your favorite apps here.
     casks = [
+      "syncthing"
       "docker"
       "wireshark"
       "raycast"

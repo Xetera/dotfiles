@@ -9,8 +9,11 @@
 ###################################################################################
 {
   networking = {
-    dns = [ "100.100.100.100"
-    "192.168.1.1"
+    dns = [
+      "100.100.100.100"
+      "10.0.0.1"
+      # in case something goes wrong with dns
+      "1.1.1.1"
     ];
     knownNetworkServices = [
       "Wi-Fi"
@@ -57,9 +60,6 @@
       };
     };
   };
-
-  # Add ability to used TouchID for sudo authentication
-  security.pam.enableSudoTouchIdAuth = true;
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   # this is required if you want to use darwin's default shell - zsh

@@ -1,14 +1,16 @@
-{pkgs, lib, ...}:
+{pkgs, lib, inputs, ...}:
 let
   gitName = "Xetera";
 in 
 {
+  
   home = {
     stateVersion = "24.05";
     sessionVariables = {
       EDITOR = "nvim";
     };
     packages = with pkgs; [
+      (import ./derivations/amnezia.nix { inherit pkgs; })
       ## tooling ##
       eza
       bat
@@ -68,12 +70,18 @@ in
     ];
   };
 
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "1password-cli"
+  ];
+  imports = [ inputs._1password-shell-plugins.hmModules.default ];
+
   programs = {
     zsh = {
       enable = true;
       syntaxHighlighting.enable = true;
       autosuggestion.enable = true;
       shellAliases = {
+        k = "kubectl";
         ls = "eza --icons always $1";
         vim = "nvim";
         lg = "lazygit";
@@ -106,6 +114,17 @@ in
         source /Users/xetera/.ghcup/env
         export BUN_INSTALL="$HOME/.bun"
         export PATH="$BUN_INSTALL/bin:$PATH"
+
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+        [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+        
+        # flux
+        . <(flux completion zsh)
+
+        hurl() {
+          curl https://tls.lynx-toad.ts.net/api/forward -H 'x-api-key: 4jmVoWNGHGhpenWt4' "$@"
+        }
       '';
 
       antidote = {
@@ -133,7 +152,7 @@ in
         git.overrideGpg = true;
         git.paging = {
           colorArg = "always";
-          pager = "${pkgs.delta}/bin/delta --paging=never --hyperlinks --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
+          # pager = "${pkgs.delta}/bin/delta --paging=never --hyperlinks --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
         };
       };
     };
@@ -228,6 +247,10 @@ in
         delta.line-numbers = true;
         merge.conflictstyle = "diff3";
       };
+    };
+    _1password-shell-plugins = {
+      enable = true;
+      plugins = with pkgs; [ gh ];
     };
   };
 }
