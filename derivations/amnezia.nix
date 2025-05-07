@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, appimageTools }:
+{ stdenv, fetchurl, pkgs, cpio, xar, ... }:
 
 stdenv.mkDerivation rec {
   pname = "AmneziaVPN";
@@ -6,15 +6,25 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/amnezia-vpn/amnezia-client/releases/download/${version}/AmneziaVPN_${version}_macos.dmg";
-    sha256 = "sha256-hash";
+    sha256 = "sha256-QKDbYRs1USoB2oBZWp3XuMKK82o/WlokjKRJ/zH3Y9k=";
   };
 
-  nativeBuildInputs = [ appimageTools ];
+  sourceRoot = ".";
+
+  phases = [ "installPhase" ];
 
   installPhase = ''
     mkdir -p $out/Applications
-    hdiutil attach $src -mountpoint /Volumes/ExampleApp
-    cp -R /Volumes/ExampleApp/Example.app $out/Applications/
-    hdiutil detach /Volumes/ExampleApp
+    /usr/bin/hdiutil attach $src -mountpoint /Volumes/AmneziaVPN
+    cp -R /Volumes/AmneziaVPN/AmneziaVPN.app "$out/Applications/"
+    ls -la $out/Applications/AmneziaVPN.app
+    /usr/bin/hdiutil detach /Volumes/AmneziaVPN
+    ls -la $out
   '';
+
+  meta = {
+    description = "Amnezia VPN Client";
+    homepage = "https://github.com/AmneziaVPN/amnezia-client";
+    license = pkgs.lib.licenses.gpl3;
+  };
 }

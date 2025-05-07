@@ -10,7 +10,7 @@ in
       EDITOR = "nvim";
     };
     packages = with pkgs; [
-      (import ./derivations/amnezia.nix { inherit pkgs; })
+      (pkgs.callPackage ./derivations/amnezia.nix { })
       ## tooling ##
       eza
       bat
@@ -40,6 +40,8 @@ in
       jless
       postgresql
       numbat
+      glances
+      dive
 
       ## network ##
       wireshark # -> installed in homebrew
