@@ -127,6 +127,9 @@ in
         hurl() {
           curl https://tls.lynx-toad.ts.net/api/forward -H 'x-api-key: 4jmVoWNGHGhpenWt4' "$@"
         }
+        mongodb() {
+          kubectl port-forward -n offload svc/mongodb 27017 27017
+        }
       '';
 
       antidote = {

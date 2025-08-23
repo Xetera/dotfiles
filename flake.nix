@@ -30,6 +30,7 @@
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
+    nix-topology.url = "github:oddlama/nix-topology";
   };
 
   # The `outputs` function will return all the build results of the flake.
