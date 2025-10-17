@@ -28,7 +28,7 @@
     pkgs.nerd-fonts.jetbrains-mono
   ];
 
-  services.tailscale.enable = true;
+  # services.tailscale.enable = true;
 
   # TODO To make this work, homebrew need to be installed manually, see https://brew.sh
   #
@@ -44,6 +44,7 @@
     };
 
     taps = [
+      "epk/epk"
       # "homebrew/services"
     ];
 
@@ -54,22 +55,20 @@
       "kubectl"
       "helm"
       "mas"
+      "yabai"
     ];
 
     # `brew install --cask`
     # TODO Feel free to add your favorite apps here.
     casks = [
       "libreoffice"
-      "syncthing"
-      "docker"
       "wireshark"
       "raycast"
       "zed"
       "background-music"
       "fmail2"
       "font-monaspace"
-      "ghostty"
-      # "google-chrome"
+      "font-sf-mono-nerd-font"
     ];
   };
 }

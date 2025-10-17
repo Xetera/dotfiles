@@ -1,9 +1,14 @@
-{pkgs, lib, inputs, ...}:
+{
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 let
   gitName = "Xetera";
-in 
+in
 {
-  
+
   home = {
     stateVersion = "24.05";
     sessionVariables = {
@@ -34,7 +39,6 @@ in
       ## productivity ##
       lazygit
       lazydocker
-      thefuck
       btop
       jq
       jless
@@ -54,7 +58,7 @@ in
       audacity
 
       # networking
-      tailscale
+      # tailscale
 
       ## developer setup ##
       git
@@ -72,9 +76,11 @@ in
     ];
   };
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "1password-cli"
-  ];
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
+    builtins.elem (lib.getName pkg) [
+      "1password-cli"
+    ];
   imports = [ inputs._1password-shell-plugins.hmModules.default ];
 
   programs = {
@@ -90,14 +96,13 @@ in
         # https://github.com/nix-community/home-manager/issues/1088
         reloadzsh = "rm -f ~/.zshrc.zwc && zcompile ~/.zshrc";
         editc = "nvim ~/.config/nix";
-        update = "nixfmt ~/.config/nix/flake.nix && darwin-rebuild switch --flake ~/.config/nix#tim";
+        update = "sudo nixfmt ~/.config/nix/flake.nix && darwin-rebuild switch --flake ~/.config/nix#tim";
         dlp = "yt-dlp --no-mtime";
         psql = "nix shell nixpkgs#postgresql --command psql";
       };
-      initExtra = ''
+      initContent = ''
         # make sure homebrew is in path
         eval "$(/opt/homebrew/bin/brew shellenv)"
-
         source ${./p10k-config/.p10k.zsh}
 
         # needed by unixorn/fzf-zsh-plugin
@@ -113,6 +118,7 @@ in
         export ANDROID_HOME="/Users/xetera/Library/Android/sdk"
         export PATH="$PATH:/Users/xetera/.ghcup/hls/2.9.0.1/bin"
         export PATH="$PATH:/Users/xetera/.cargo/bin"
+        export PATH="$PATH:/Users/xetera/.local/bin"
         source /Users/xetera/.ghcup/env
         export BUN_INSTALL="$HOME/.bun"
         export PATH="$BUN_INSTALL/bin:$PATH"
@@ -120,9 +126,10 @@ in
         export NVM_DIR="$HOME/.nvm"
         [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
         [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-        
+
         # flux
         . <(flux completion zsh)
+        sudo yabai --load-sa > /Users/xetera/test.txt
 
         hurl() {
           curl https://tls.lynx-toad.ts.net/api/forward -H 'x-api-key: 4jmVoWNGHGhpenWt4' "$@"
@@ -146,41 +153,38 @@ in
       enable = true;
       settings = {
         gui = {
-          showIcons = true;
+          nerdFontsVersion = "3";
           branchColors = {
             ${lib.toLower gitName} = "#11aaff";
           };
           theme = {
-            selectedLineBgColor = ["black" "bold"];
+            selectedLineBgColor = [
+              "black"
+              "bold"
+            ];
           };
         };
-        git.overrideGpg = true;
-        git.paging = {
-          colorArg = "always";
-          # pager = "${pkgs.delta}/bin/delta --paging=never --hyperlinks --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
+        git = {
+          overrideGpg = true;
+          pagers = [{
+            pager = "delta --paging never";
+          }];
+          log = {
+            showGraph = "always";
+          };
         };
       };
     };
-    # ghostty = {
-    #   enable = true;
-    #   enableZshIntegration = true;
-    #   installVimSyntax = true;
-    #   settings = {
-    #     window-padding-y = 0;
-    #     window-padding-x = 0;
-    #     macos-titlebar-style = "native";
-    #   };
-    # };
     alacritty = {
       enable = true;
       settings = {
         window = {
-           blur = true;
-           opacity = 1;
-           padding.x = 0;
-           padding.y = 0;
-           decorations = "Full";
-           decorations_theme_variant = "Light"; # "Dark"
+          blur = true;
+          opacity = 1;
+          padding.x = 0;
+          padding.y = 0;
+          decorations = "Full";
+          decorations_theme_variant = "Light"; # "Dark"
         };
         cursor.style = "Beam";
         scrolling.multiplier = 3;
@@ -198,31 +202,76 @@ in
           bold_italic.style = "Bold Italic";
           size = 17.0;
         };
-        hints.enabled = [{
-          command = "open"; # On macOS
-          hyperlinks = true;
-          post_processing = true;
-          persist = false;
-          mouse.enabled = true;
-          binding = { key = "U"; mods = "Control|Shift"; };
-          regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\\u0000-\\u001F\\u007F-\\u009F<>\"\\\\s{-}\\\\^⟨⟩`]+";
-        }];
-        keyboard = {
-        bindings = [
-          # up down history
-          { key = "K";     mods = "Control"; chars = "\\u001b[A";  }
-          { key = "J";     mods = "Control"; chars = "\\u001b[B";  }
-          # up down screen
-          { key = "K"; mods = "Control|Command"; action = "ScrollLineUp";}
-          { key = "J"; mods = "Control|Command"; action = "ScrollLineDown"; }
-          # vim motions
-          { key = "Left";  mods = "Command"; chars = "\\u001b[1~" ;  }
-          { key = "Left";  mods = "Alt";     chars = "\\u001bB";   }
-          { key = "Right"; mods = "Alt";     chars = "\\u001bF";   }
-          { key = "Left";  mods = "Command"; chars = "\\u001bOH"  ;}
-          { key = "Right"; mods = "Command"; chars =  "\\u001bOF" ;}
-          { key = "Back";  mods = "Command"; chars = "\\u0015"    ;}
+        hints.enabled = [
+          {
+            command = "open"; # On macOS
+            hyperlinks = true;
+            post_processing = true;
+            persist = false;
+            mouse.enabled = true;
+            binding = {
+              key = "U";
+              mods = "Control|Shift";
+            };
+            regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\\u0000-\\u001F\\u007F-\\u009F<>\"\\\\s{-}\\\\^⟨⟩`]+";
+          }
         ];
+        keyboard = {
+          bindings = [
+            # up down history
+            {
+              key = "K";
+              mods = "Control";
+              chars = "\\u001b[A";
+            }
+            {
+              key = "J";
+              mods = "Control";
+              chars = "\\u001b[B";
+            }
+            # up down screen
+            {
+              key = "K";
+              mods = "Control|Command";
+              action = "ScrollLineUp";
+            }
+            {
+              key = "J";
+              mods = "Control|Command";
+              action = "ScrollLineDown";
+            }
+            # vim motions
+            {
+              key = "Left";
+              mods = "Command";
+              chars = "\\u001b[1~";
+            }
+            {
+              key = "Left";
+              mods = "Alt";
+              chars = "\\u001bB";
+            }
+            {
+              key = "Right";
+              mods = "Alt";
+              chars = "\\u001bF";
+            }
+            {
+              key = "Left";
+              mods = "Command";
+              chars = "\\u001bOH";
+            }
+            {
+              key = "Right";
+              mods = "Command";
+              chars = "\\u001bOF";
+            }
+            {
+              key = "Back";
+              mods = "Command";
+              chars = "\\u0015";
+            }
+          ];
         };
       };
     };
@@ -243,8 +292,7 @@ in
 
         # pager config
         # overridden by the previous config
-        # core.pager = "delta";
-        # interactive.diffFilter = "delta --color-only";
+				#interactive.diffFilter = "delta --color-only";
         diff.algorithm = "histogram";
         diff.colorMoved = "default";
 

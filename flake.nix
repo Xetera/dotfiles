@@ -19,16 +19,19 @@
   # This is the standard format for flake.nix. `inputs` are the dependencies of the flake,
   # Each item in `inputs` will be passed as a parameter to the `outputs` function after being pulled and built.
   inputs = {
-    nixpkgs-darwin.url = "github:NixOS/nixpkgs?rev=d2faa1bbca1b1e4962ce7373c5b0879e5b12cef2";
+    # nixpkgs-darwin.url = "github:NixOS/nixpkgs?rev=d2faa1bbca1b1e4962ce7373c5b0879e5b12cef2";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     # nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
     _1password-shell-plugins.url = "github:1Password/shell-plugins";
-    darwin = {
-      url = "github:lnl7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs-darwin";
-    };
+    # darwin = {
+    #   url = "github:nix-darwin/nix-darwin";
+    #   inputs.nixpkgs.follows = "nixpkgs-darwin";
+    # };
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
-      inputs.nixpkgs.follows = "nixpkgs-darwin";
+      url = "github:nix-community/home-manager/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-topology.url = "github:oddlama/nix-topology";
   };
@@ -42,7 +45,7 @@
     inputs@{
       self,
       nixpkgs,
-      darwin,
+      nix-darwin,
       home-manager,
       ...
     }:
@@ -57,7 +60,7 @@
       };
     in
     {
-      darwinConfigurations."${hostname}" = darwin.lib.darwinSystem {
+      darwinConfigurations."${hostname}" = nix-darwin.lib.darwinSystem {
         inherit system specialArgs;
         modules = [
           ./modules/nix-core.nix
