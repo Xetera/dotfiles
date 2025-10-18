@@ -5,15 +5,6 @@
   signing.signByDefault = true;
   userEmail = "contact@xetera.dev";
   userName = gitName;
-  # delta = {
-  #   enable = false;
-  #   options = {
-  #     true-color = "always";
-  #     line-numbers = true;
-  #     hyperlinks = true;
-  #     whitespace-error-style = "22 reverse";
-  #   };
-  # };
   extraConfig = {
     pull.rebase = true;
     # needed for some bigger clones

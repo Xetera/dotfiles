@@ -10,7 +10,7 @@
     vim = "nvim";
     lg = "lazygit";
     # https://github.com/nix-community/home-manager/issues/1088
-    reloadzsh = "rm -f ${rootDir}/.zshrc.zwc && zcompile ${rootDir}/.zshrc && . ${rootDir}/.zshrc";
+    reloadzsh = "rm -f $HOME/${rootDir}/.zshrc.zwc && zcompile $HOME/${rootDir}/.zshrc && . $HOME/${rootDir}/.zshrc";
     editc = "nvim ~/.config/nix";
     ee = "nvim ~/.config/nix";
     update = "nixfmt ~/.config/nix/flake.nix && sudo darwin-rebuild switch --flake ~/.config/nix#tim";
@@ -40,7 +40,6 @@
     export PATH="$BUN_INSTALL/bin:$PATH"
 
     export NVM_DIR="$HOME/.nvm"
-    export BAT_THEME="Catpuccin Frappe"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 

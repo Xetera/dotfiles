@@ -39,8 +39,6 @@
 
     onActivation = {
       autoUpdate = false;
-      # 'zap': uninstalls all formulae(and related files) not listed here.
-      # cleanup = "zap";
     };
 
     taps = [
@@ -55,7 +53,7 @@
       "kubectl"
       "helm"
       "mas"
-      "yabai"
+      # "yabai"
     ];
 
     # `brew install --cask`

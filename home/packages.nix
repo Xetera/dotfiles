@@ -16,6 +16,7 @@ with pkgs;
   yt-dlp
   trippy
   stripe-cli
+  wezterm
   # binsider -> broken?
 
   ## hacking ##

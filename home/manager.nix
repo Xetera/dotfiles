@@ -9,7 +9,7 @@ let
 in
 {
   home = {
-    stateVersion = "24.05";
+    stateVersion = "25.05";
     sessionVariables = {
       EDITOR = "nvim";
     };
@@ -24,7 +24,7 @@ in
   imports = [ inputs._1password-shell-plugins.hmModules.default ];
 
   programs = {
-    zsh = (import ./zsh.nix { rootDir = "~/.config/zsh"; });
+    zsh = (import ./zsh.nix { rootDir = ".config/zsh"; });
     lazygit = (
       import ./lazygit.nix {
         inherit lib;
@@ -32,6 +32,7 @@ in
         inherit gitName;
       }
     );
+    wezterm = import ./wezterm.nix;
     alacritty = import ./alacritty.nix;
     git = (
       import ./git.nix {

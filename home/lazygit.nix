@@ -19,11 +19,9 @@
     };
     git = {
       overrideGpg = true;
-      pagers = [
-        {
-          pager = "${pkgs.delta}/bin/delta --paging never --color-only $(defaults read -g AppleInterfaceStyle &>/dev/null || echo --light) --line-numbers --hyperlinks --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
-        }
-      ];
+      paging = {
+        pager = "${pkgs.delta}/bin/delta --paging never --color-only $(defaults read -g AppleInterfaceStyle &>/dev/null || echo --light) --line-numbers --hyperlinks --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
+      };
       log = {
         showGraph = "always";
         showWholeGraph = true;
