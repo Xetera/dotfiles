@@ -23,10 +23,9 @@
       "Tailscale Tunnel"
     ];
   };
-  environment.shellAliases = {
-  };
-
   services.yabai = import ./yabai.nix;
+  services.skhd = import ./skhd.nix;
+
   system = {
     stateVersion = 5;
     primaryUser = "xetera";
