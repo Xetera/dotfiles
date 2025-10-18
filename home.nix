@@ -8,14 +8,12 @@ let
   gitName = "Xetera";
 in
 {
-
   home = {
     stateVersion = "24.05";
     sessionVariables = {
       EDITOR = "nvim";
     };
     packages = with pkgs; [
-      (pkgs.callPackage ./derivations/amnezia.nix { })
       ## tooling ##
       eza
       bat
@@ -86,6 +84,7 @@ in
   programs = {
     zsh = {
       enable = true;
+      dotDir = ".config/zsh";
       syntaxHighlighting.enable = true;
       autosuggestion.enable = true;
       shellAliases = {
@@ -94,9 +93,9 @@ in
         vim = "nvim";
         lg = "lazygit";
         # https://github.com/nix-community/home-manager/issues/1088
-        reloadzsh = "rm -f ~/.zshrc.zwc && zcompile ~/.zshrc";
+        reloadzsh = "rm -f ~/.config/zsh/.zshrc.zwc && zcompile ~/.config/zsh/.zshrc && . ~/.config/zsh/.zshrc";
         editc = "nvim ~/.config/nix";
-        update = "sudo nixfmt ~/.config/nix/flake.nix && darwin-rebuild switch --flake ~/.config/nix#tim";
+        update = "nixfmt ~/.config/nix/flake.nix && sudo darwin-rebuild switch --flake ~/.config/nix#tim";
         dlp = "yt-dlp --no-mtime";
         psql = "nix shell nixpkgs#postgresql --command psql";
       };
@@ -124,12 +123,13 @@ in
         export PATH="$BUN_INSTALL/bin:$PATH"
 
         export NVM_DIR="$HOME/.nvm"
+        export BAT_THEME="Catpuccin Frappe"
         [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
         [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
         # flux
         . <(flux completion zsh)
-        sudo yabai --load-sa > /Users/xetera/test.txt
+        sudo yabai --load-sa
 
         hurl() {
           curl https://tls.lynx-toad.ts.net/api/forward -H 'x-api-key: 4jmVoWNGHGhpenWt4' "$@"
@@ -159,18 +159,20 @@ in
           };
           theme = {
             selectedLineBgColor = [
-              "black"
-              "bold"
+              "reverse"
             ];
           };
         };
         git = {
           overrideGpg = true;
-          pagers = [{
-            pager = "delta --paging never";
-          }];
+          pagers = [
+            {
+              pager = "${pkgs.delta}/bin/delta --paging never --color-only $(defaults read -g AppleInterfaceStyle &>/dev/null || echo --light) --line-numbers --hyperlinks --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
+            }
+          ];
           log = {
             showGraph = "always";
+            showWholeGraph = true;
           };
         };
       };
@@ -277,27 +279,37 @@ in
     };
     git = {
       enable = true;
-      delta.enable = true;
       signing.key = "82B477CACDA27E1E756273A09852FA374C75F6FD";
       signing.signByDefault = true;
       userEmail = "contact@xetera.dev";
       userName = gitName;
-
+      # delta = {
+      #   enable = false;
+      #   options = {
+      #     true-color = "always";
+      #     line-numbers = true;
+      #     hyperlinks = true;
+      #     whitespace-error-style = "22 reverse";
+      #   };
+      # };
       extraConfig = {
         pull.rebase = true;
         # needed for some bigger clones
         http.postBuffer = 524288000;
         init.defaultBranch = "main";
         rebase.updateRefs = true;
-
-        # pager config
-        # overridden by the previous config
-				#interactive.diffFilter = "delta --color-only";
+        delta = {
+          navigate = true;
+          true-color = "always";
+          line-numbers = true;
+          hyperlinks = true;
+          whitespace-error-style = "22 reverse";
+        };
+        core.pager = "${pkgs.delta}/bin/delta --color-only $(defaults read -g AppleInterfaceStyle &>/dev/null || echo --light)";
+        interactive.diffFilter = "${pkgs.delta}/bin/delta --color-only $(defaults read -g AppleInterfaceStyle &>/dev/null || echo --light)";
         diff.algorithm = "histogram";
         diff.colorMoved = "default";
 
-        delta.navigate = true;
-        delta.line-numbers = true;
         merge.conflictstyle = "diff3";
       };
     };
