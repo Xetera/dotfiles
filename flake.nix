@@ -23,12 +23,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-    # nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
     _1password-shell-plugins.url = "github:1Password/shell-plugins";
-    # darwin = {
-    #   url = "github:nix-darwin/nix-darwin";
-    #   inputs.nixpkgs.follows = "nixpkgs-darwin";
-    # };
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -65,15 +60,12 @@
         modules = [
           ./modules/nix-core.nix
           ./modules/apps.nix
-          # ./modules/host-users.nixinputs.
           ./modules/system.nix
           home-manager.darwinModules.home-manager
           {
             home-manager = {
-              # useGlobalPkgs = true;
-              # useUserPackages = true;
               extraSpecialArgs = { inherit inputs; };
-              users.${username} = import ./home.nix;
+              users.${username} = import ./home/manager.nix;
             };
           }
         ];

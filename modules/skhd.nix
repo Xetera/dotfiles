@@ -22,9 +22,6 @@
     shift + alt - right : yabai -m window --resize right:20:0 2> /dev/null || yabai -m window --resize left:20:0 2> /dev/null
     shift + alt - d : /Users/xetera/.config/skhd/toggle_split.sh
 
-    shift + alt - s : yabai -m space --create && \
-                      index="$(yabai -m query --displays --display | jq '.spaces[-1]')" && \
-                      yabai -m window --space "$${index}" && \
-                      yabai -m space --focus "$${index}"
+    shift + alt - s : yabai -m space --create && index="$(yabai -m query --displays --display | jq '.spaces[-1]')" && yabai -m window --space "$${index}" && yabai -m space --focus "$${index}"
   '';
 }
