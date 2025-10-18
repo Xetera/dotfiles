@@ -26,6 +26,7 @@
   environment.shellAliases = {
   };
 
+  services.yabai = import ./yabai.nix;
   system = {
     stateVersion = 5;
     primaryUser = "xetera";
