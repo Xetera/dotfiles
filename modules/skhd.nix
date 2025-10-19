@@ -1,5 +1,12 @@
+{ pkgs }:
+let
+  skhd-zig = (import ../derivations/skhd-zig.nix { inherit pkgs; });
+in
 {
   enable = true;
+  # the main skhd package is sadly unmaintained.
+  # We have to derive skhd-zig manually
+  package = skhd-zig;
   skhdConfig = ''
     # movement
     alt - j : yabai -m window --focus south

@@ -24,7 +24,7 @@
     ];
   };
   services.yabai = import ./yabai.nix;
-  services.skhd = import ./skhd.nix;
+  services.skhd = (import ./skhd.nix { inherit pkgs; });
 
   system = {
     stateVersion = 5;
@@ -63,7 +63,7 @@
   programs.fish.enable = true;
   users.users.xetera = {
     home = "/Users/xetera";
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
   };
   environment.shells = [ pkgs.fish ];
 }

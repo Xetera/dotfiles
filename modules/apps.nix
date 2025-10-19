@@ -22,10 +22,9 @@
     nixd
     alejandra
     nil
-    fzf
-    fishPlugins.done
-    fishPlugins.fzf-fish
   ];
+
+  programs.fish.enable = true;
 
   fonts.packages = [
     pkgs.nerd-fonts.jetbrains-mono

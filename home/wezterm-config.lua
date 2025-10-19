@@ -12,8 +12,8 @@ local function get_appearance()
   return "Dark"
 end
 
-local function scheme_for_appearance(appearance)
-  if appearance:find("Dark") then
+local function scheme_for_appearance(app)
+  if app:find("Dark") then
     return "Catppuccin Mocha"
   else
     return "Catppuccin Latte"
@@ -26,33 +26,42 @@ bar.apply_to_config(config)
 config.initial_cols = 120
 config.initial_rows = 28
 
+local appearance = get_appearance()
 config.font_size = 14
 config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
 config.scrollback_lines = 100000
-config.color_scheme = scheme_for_appearance(get_appearance())
+config.color_scheme = scheme_for_appearance(appearance)
 config.window_decorations = "RESIZE"
 
-config.window_frame = {
-  inactive_titlebar_bg = "#353535",
-  active_titlebar_bg = "#181825",
-  inactive_titlebar_fg = "#cccccc",
-  active_titlebar_fg = "#ffffff",
-  inactive_titlebar_border_bottom = "#2b2042",
-  active_titlebar_border_bottom = "#2b2042",
-  button_fg = "#cccccc",
-  button_bg = "#2b2042",
-  button_hover_fg = "#ffffff",
-  button_hover_bg = "#3b3052",
-  -- border
-  border_left_width = "0.5cell",
-  border_right_width = "0.5cell",
-  border_bottom_height = "0.25cell",
-  border_top_height = "0.25cell",
-  border_left_color = "purple",
-  border_right_color = "purple",
-  border_bottom_color = "purple",
-  border_top_color = "purple",
-}
+local function window_frame(app)
+  local sky = "#04a5e5"
+  local peach = "#5b6078"
+  if app:find("Dark") then
+    return {
+      border_left_width = "0.4cell",
+      border_right_width = "0.4cell",
+      border_bottom_height = "0.2cell",
+      border_top_height = "0.2cell",
+      border_left_color = peach,
+      border_right_color = peach,
+      border_bottom_color = peach,
+      border_top_color = peach,
+    }
+  else
+    return {
+      border_left_width = "0.4cell",
+      border_right_width = "0.4cell",
+      border_bottom_height = "0.2cell",
+      border_top_height = "0.2cell",
+      border_left_color = sky,
+      border_right_color = sky,
+      border_bottom_color = sky,
+      border_top_color = sky,
+    }
+  end
+end
+
+-- config.window_frame = window_frame(appearance)
 
 config.keys = {
   {

@@ -55,6 +55,12 @@
       };
     in
     {
+      devShells."${hostname}" = nixpkgs.mkShell {
+        buildInputs = [ nixpkgs.fish ];
+        shellHook = ''
+          exec fixh
+        '';
+      };
       darwinConfigurations."${hostname}" = nix-darwin.lib.darwinSystem {
         inherit system specialArgs;
         modules = [
