@@ -7,8 +7,6 @@
     ls = "eza --icons always $1";
     vim = "nvim";
     lg = "lazygit";
-    # https://github.com/nix-community/home-manager/issues/1088
-    # reloadzsh = "rm -f $HOME/${rootDir}/.zshrc.zwc && zcompile $HOME/${rootDir}/.zshrc && . $HOME/${rootDir}/.zshrc";
     editc = "nvim ~/.config/nix";
     ee = "nvim ~/.config/nix";
     update = "sudo darwin-rebuild switch --flake ~/.config/nix#tim";
