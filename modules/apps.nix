@@ -22,6 +22,9 @@
     nixd
     alejandra
     nil
+    fzf
+    fishPlugins.done
+    fishPlugins.fzf-fish
   ];
 
   fonts.packages = [

@@ -24,7 +24,7 @@ in
   imports = [ inputs._1password-shell-plugins.hmModules.default ];
 
   programs = {
-    zsh = (import ./zsh.nix { rootDir = ".config/zsh"; });
+    fish = import ./fish.nix;
     lazygit = (
       import ./lazygit.nix {
         inherit lib;

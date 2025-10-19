@@ -1,10 +1,8 @@
-{ rootDir }:
+{ pkgs, rootDir }:
 {
   enable = true;
-  dotDir = rootDir;
-  syntaxHighlighting.enable = true;
-  autosuggestion.enable = true;
-  shellAliases = {
+  preferAbbrs = true;
+  shellAbbrs = {
     k = "kubectl";
     ls = "eza --icons always $1";
     vim = "nvim";
@@ -17,13 +15,17 @@
     dlp = "yt-dlp --no-mtime";
     psql = "nix shell nixpkgs#postgresql --command psql";
   };
-  initContent = ''
+  shellInit = ''
     # make sure homebrew is in path
     eval "$(/opt/homebrew/bin/brew shellenv)"
-    source ${./p10k-config/.p10k.zsh}
+    if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+    then
+      shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+      exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+    fi
 
     # needed by unixorn/fzf-zsh-plugin
-    source <(fzf --zsh)
+    source <(fzf --fish)
 
     # so this is necessary
     export PNPM_HOME="/Users/xetera/Library/pnpm"
@@ -44,7 +46,7 @@
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
     # flux
-    . <(flux completion zsh)
+    . <(flux completion fish)
 
     hurl() {
       curl https://tls.lynx-toad.ts.net/api/forward -H 'x-api-key: 4jmVoWNGHGhpenWt4' "$@"
@@ -53,14 +55,4 @@
       kubectl port-forward -n offload svc/mongodb 27017 27017
     }
   '';
-
-  antidote = {
-    enable = true;
-    useFriendlyNames = true;
-    plugins = [
-      "romkatv/powerlevel10k"
-      "Aloxaf/fzf-tab"
-      "unixorn/fzf-zsh-plugin"
-    ];
-  };
 }

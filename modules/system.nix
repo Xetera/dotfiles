@@ -60,17 +60,10 @@
     };
   };
 
-  # Create /etc/zshrc that loads the nix-darwin environment.
-  # this is required if you want to use darwin's default shell - zsh
-  # programs.zsh.enable = true;
-  programs.zsh.enable = true;
+  programs.fish.enable = true;
   users.users.xetera = {
     home = "/Users/xetera";
     shell = pkgs.zsh;
   };
-  # this doesn't actually set the shell to the right thing.
-  # Need to run these commands to make it work? I hate nix-darwin
-  # echo "$(which zsh)" | sudo tee -a /etc/shells
-  # chsh -s $(which zsh) $USER
-  environment.shells = [ pkgs.zsh ];
+  environment.shells = [ pkgs.fish ];
 }

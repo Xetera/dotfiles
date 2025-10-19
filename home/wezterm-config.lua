@@ -43,6 +43,15 @@ config.window_frame = {
   button_bg = "#2b2042",
   button_hover_fg = "#ffffff",
   button_hover_bg = "#3b3052",
+  -- border
+  border_left_width = "0.5cell",
+  border_right_width = "0.5cell",
+  border_bottom_height = "0.25cell",
+  border_top_height = "0.25cell",
+  border_left_color = "purple",
+  border_right_color = "purple",
+  border_bottom_color = "purple",
+  border_top_color = "purple",
 }
 
 config.keys = {
