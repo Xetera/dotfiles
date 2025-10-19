@@ -9,6 +9,8 @@ let
 in
 {
   home = {
+    # weird errors causd by this one
+    enableNixpkgsReleaseCheck = false;
     stateVersion = "25.05";
     sessionVariables = {
       EDITOR = "nvim";
@@ -32,6 +34,7 @@ in
       fi
     '';
     fish = (import ./fish.nix { inherit pkgs; });
+    zoxide = import ./zoxide.nix;
     lazygit = (
       import ./lazygit.nix {
         inherit lib;

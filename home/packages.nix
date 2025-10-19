@@ -16,6 +16,8 @@ with pkgs;
   yt-dlp
   trippy
   stripe-cli
+  zoxide
+
   wezterm
   # binsider -> broken?
 

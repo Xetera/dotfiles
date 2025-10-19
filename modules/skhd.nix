@@ -8,7 +8,6 @@ in
   # We have to derive skhd-zig manually
   package = skhd-zig;
   skhdConfig = ''
-    # movement
     alt - j : yabai -m window --focus south
     alt - k : yabai -m window --focus north
     alt - h : yabai -m window --focus west

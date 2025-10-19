@@ -3,8 +3,11 @@
   enable = true;
   preferAbbrs = true;
   shellAbbrs = {
+    ".." = "z ..";
+    "..." = "z ../..";
+    "...." = "z ../../..";
     k = "kubectl";
-    ls = "eza --icons always $1";
+    ls = "eza --icons always";
     vim = "nvim";
     lg = "lazygit";
     editc = "nvim ~/.config/nix";
