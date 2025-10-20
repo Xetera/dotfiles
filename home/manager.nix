@@ -26,6 +26,13 @@ in
   imports = [ inputs._1password-shell-plugins.hmModules.default ];
 
   programs = {
+    direnv = {
+      enable = true;
+      # enableFishIntegration = true;
+      silent = true;
+      nix-direnv.enable = true;
+    };
+    starship = import ./starship.nix;
     bash.initExtra = ''
       if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
       then

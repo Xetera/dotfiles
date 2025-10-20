@@ -6,9 +6,11 @@ with pkgs;
   bat
   tokei
   fd
+  sd
+  procs
   ripgrep
   semgrep
-  dust
+  dua
   fzf
   delta
   docker
@@ -17,8 +19,8 @@ with pkgs;
   trippy
   stripe-cli
   zoxide
-
   wezterm
+  posting
   # binsider -> broken?
 
   ## hacking ##
@@ -45,10 +47,8 @@ with pkgs;
   # vlc unsupported?
   audacity
 
-  # networking
-  # tailscale
-
   ## developer setup ##
+  fishPlugins.nvm
   git
   neovim
   antidote

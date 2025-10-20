@@ -2,12 +2,13 @@
 {
   enable = true;
   preferAbbrs = true;
+  generateCompletions = true;
   shellAbbrs = {
     ".." = "z ..";
     "..." = "z ../..";
     "...." = "z ../../..";
     k = "kubectl";
-    ls = "eza --icons always";
+    ls = "eza -lb --icons";
     vim = "nvim";
     lg = "lazygit";
     editc = "nvim ~/.config/nix";
@@ -21,9 +22,6 @@
     # make sure homebrew is in path
     eval "$(/opt/homebrew/bin/brew shellenv)"
 
-    # needed by unixorn/fzf-zsh-plugin
-    # source <(fzf --fish)
-
     # so this is necessary
     export PNPM_HOME="/Users/xetera/Library/pnpm"
     export ANDROID_HOME="/Users/xetera/Library/Android/sdk"
@@ -33,10 +31,6 @@
     # source /Users/xetera/.ghcup/env
     export BUN_INSTALL="$HOME/.bun"
     export PATH="$BUN_INSTALL/bin:$PATH"
-
-    #export NVM_DIR="$HOME/.nvm"
-    #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
     # flux
     # . <(flux completion fish)
