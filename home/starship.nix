@@ -1,14 +1,10 @@
+{ lib, pkgs }:
 {
   enable = true;
-  # Configuration written to ~/.config/starship.toml
   settings = {
-    # add_newline = false;
-
-    # character = {
-    #   success_symbol = "[➜](bold green)";
-    #   error_symbol = "[➜](bold red)";
-    # };
-
-    # package.disabled = true;
+    nix_shell = {
+      format = "via [ $name](bold blue) ";
+      impure_msg = "";
+    };
   };
 }

@@ -24,7 +24,6 @@
       };
       log = {
         showGraph = "always";
-        showWholeGraph = true;
       };
     };
   };

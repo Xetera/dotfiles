@@ -45,9 +45,8 @@
       ...
     }:
     let
-      # TODO replace with your own username, system and hostname
       username = "xetera";
-      system = "aarch64-darwin"; # aarch64-darwin or x86_64-darwin
+      system = "aarch64-darwin";
       hostname = "tim";
 
       specialArgs = inputs // {

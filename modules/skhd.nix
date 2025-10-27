@@ -7,6 +7,8 @@ in
   # the main skhd package is sadly unmaintained.
   # We have to derive skhd-zig manually
   package = skhd-zig;
+  # if changing this doesn't work properly, comment out
+  # service.skhd, switch, uncomment and switch again
   skhdConfig = ''
     alt - j : yabai -m window --focus south
     alt - k : yabai -m window --focus north
@@ -29,10 +31,10 @@ in
     shift + alt - n : yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "stack" else "bsp" end')
 
     # resize
-    shift + alt - left : yabai -m window --resize right:-20:0 2> /dev/null || yabai -m window --resize left:-20:0 2> /dev/null
-    shift + alt - down : yabai  -m window --resize bottom:0:20 2> /dev/null || yabai -m window --resize top:0:20 2> /dev/null
-    shift + alt - up : yabai -m window --resize bottom:0:-20 2> /dev/null || yabai -m window --resize top:0:-20 2> /dev/null
-    shift + alt - right : yabai -m window --resize right:20:0 2> /dev/null || yabai -m window --resize left:20:0 2> /dev/null
+    cmd + shift + alt - left : yabai -m window --resize right:-20:0 2> /dev/null || yabai -m window --resize left:-20:0 2> /dev/null
+    cmd + shift + alt - down : yabai  -m window --resize bottom:0:20 2> /dev/null || yabai -m window --resize top:0:20 2> /dev/null
+    cmd + shift + alt - up : yabai -m window --resize bottom:0:-20 2> /dev/null || yabai -m window --resize top:0:-20 2> /dev/null
+    cmd + shift + alt - right : yabai -m window --resize right:20:0 2> /dev/null || yabai -m window --resize left:20:0 2> /dev/null
 
     # 1/3 - 2/3 alternating splits
     shift + alt - d : /Users/xetera/.config/skhd/toggle_split.sh

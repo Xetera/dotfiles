@@ -32,7 +32,8 @@ in
       silent = true;
       nix-direnv.enable = true;
     };
-    starship = import ./starship.nix;
+    pay-respects = import ./pay-respects.nix;
+    starship = (import ./starship.nix { inherit pkgs lib; });
     bash.initExtra = ''
       if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
       then

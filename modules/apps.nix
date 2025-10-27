@@ -44,18 +44,12 @@
     };
 
     taps = [
-      "epk/epk"
-      # "homebrew/services"
     ];
 
     # `brew install`
     # TODO Feel free to add your favorite apps here.
     brews = [
-      # k8s
-      "kubectl"
-      "helm"
       "mas"
-      # "yabai"
     ];
 
     # `brew install --cask`
@@ -64,9 +58,8 @@
       "libreoffice"
       "wireshark"
       "raycast"
-      "zed"
+      "zed@preview"
       "background-music"
-      "fmail2"
       "font-monaspace"
       "font-sf-mono-nerd-font"
     ];

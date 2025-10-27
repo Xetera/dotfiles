@@ -84,6 +84,16 @@ config.keys = {
     mods = "OPT",
     action = wezterm.action({ SendString = "\x1bf" }),
   },
+  {
+    key = "k",
+    mods = "CTRL",
+    action = wezterm.action.SendKey({ key = "UpArrow" }),
+  },
+  {
+    key = "j",
+    mods = "CTRL",
+    action = wezterm.action.SendKey({ key = "DownArrow" }),
+  },
 }
 
 -- Finally, return the configuration to wezterm:

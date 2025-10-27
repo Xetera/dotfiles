@@ -21,7 +21,12 @@ with pkgs;
   zoxide
   wezterm
   posting
-  # binsider -> broken?
+  kubecolor
+  k9s
+  spotify-player
+  pay-respects
+
+  devenv
 
   ## hacking ##
   # apkleaks
