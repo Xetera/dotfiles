@@ -25,6 +25,7 @@
   };
   services.yabai = import ./yabai.nix;
   services.skhd = (import ./skhd.nix { inherit pkgs; });
+  services.syncthing = import ./syncthing.nix;
 
   system = {
     stateVersion = 5;

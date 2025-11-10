@@ -41,6 +41,7 @@ with pkgs;
   numbat
   glances
   dive
+  syncthing
 
   ## network ##
   wireshark # -> installed in homebrew
