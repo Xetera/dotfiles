@@ -24,12 +24,11 @@ in
       "1password-cli"
     ];
   imports = [ inputs._1password-shell-plugins.hmModules.default ];
-  services.syncthing = import ./syncthing.nix;
 
+  services.syncthing = import ./syncthing.nix;
   programs = {
     direnv = {
       enable = true;
-      # enableFishIntegration = true;
       silent = true;
       nix-direnv.enable = true;
     };

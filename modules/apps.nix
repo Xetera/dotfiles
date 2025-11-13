@@ -24,6 +24,24 @@
     nil
   ];
 
+  # launchd.user.agents = {
+  #   syncthing = {
+  #     serviceConfig = {
+  #       ProgramArguments = [
+  #         "${pkgs.syncthing}/bin/syncthing"
+  #         "-no-browser"
+  #         "-no-restart"
+  #         "-home=/Users/xetera/.config/syncthing"
+  #       ];
+  #       KeepAlive = true;
+  #       RunAtLoad = true;
+  #       ProcessType = "Background";
+  #       StandardOutPath = "/Users/xetera/.local/share/syncthing/stdout.log";
+  #       StandardErrorPath = "/Users/xetera/.local/share/syncthing/stderr.log";
+  #     };
+  #   };
+  # };
+
   programs.fish.enable = true;
 
   fonts.packages = [
@@ -50,6 +68,8 @@
     # TODO Feel free to add your favorite apps here.
     brews = [
       "mas"
+      "nebula"
+      "syncthing"
     ];
 
     # `brew install --cask`
@@ -62,6 +82,7 @@
       "background-music"
       "font-monaspace"
       "font-sf-mono-nerd-font"
+      "claude-code"
     ];
   };
 }

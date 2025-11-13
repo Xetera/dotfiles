@@ -1,9 +1,8 @@
 {
   enable = true;
-  dataDir = "/Users/xetera/Documents";
   overrideDevices = true;
   overrideFolders = true;
-  configDir = "/Users/xetera/.config/syncthing";
+
   settings = {
     devices = {
       "android" = {
@@ -12,7 +11,11 @@
     };
     folders = {
       "obsidian" = {
-        path = "/Users/xetera/Documents/obsidian";
+        id = "obsidian";
+        # syncthing filewatcher does not work on fucking macos for some reason
+        fsWatcherEnabled = true;
+        rescanIntervalS = 5;
+        path = "/Users/xetera/Obsidian";
         devices = [ "android" ];
       };
     };

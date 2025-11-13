@@ -8,6 +8,7 @@
     psql = "nix shell nixpkgs#postgresql --command psql";
     psql17 = "nix shell nixpkgs#postgresql_17 --command psql";
     try = "nix run nixpkgs.";
+    "?" = "erd -H -L 2";
   };
   shellAbbrs = {
     ".." = "z ..";

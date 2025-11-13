@@ -1,6 +1,17 @@
 { pkgs }:
+let
+  pkgsUnfree = import pkgs.path {
+    config.allowUnfreePredicate =
+      pkg:
+      builtins.elem (pkgs.lib.getName pkg) [
+        "obsidian"
+      ];
+    localSystem = pkgs.stdenv.hostPlatform;
+  };
+in
 with pkgs;
 [
+  pkgsUnfree.obsidian
   ## tooling ##
   eza
   bat
@@ -24,7 +35,10 @@ with pkgs;
   kubecolor
   k9s
   spotify-player
+  yaak
   pay-respects
+  uv
+  syncthing
 
   devenv
 
@@ -41,10 +55,9 @@ with pkgs;
   numbat
   glances
   dive
-  syncthing
 
   ## network ##
-  wireshark # -> installed in homebrew
+  #wireshark # -> installed in homebrew
   nmap
   tcpreplay
 
