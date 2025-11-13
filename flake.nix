@@ -25,7 +25,7 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     _1password-shell-plugins.url = "github:1Password/shell-plugins";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-topology.url = "github:oddlama/nix-topology";
@@ -66,6 +66,7 @@
           ./modules/nix-core.nix
           ./modules/apps.nix
           ./modules/system.nix
+          ./modules/spoofdpi-service.nix
           home-manager.darwinModules.home-manager
           {
             home-manager = {

@@ -3,9 +3,11 @@
   enable = true;
   signing.key = "82B477CACDA27E1E756273A09852FA374C75F6FD";
   signing.signByDefault = true;
-  userEmail = "contact@xetera.dev";
-  userName = gitName;
-  extraConfig = {
+  settings = {
+    user = {
+      name = gitName;
+      email = "contact@xetera.dev";
+    };
     pull.rebase = true;
     # needed for some bigger clones
     http.postBuffer = 524288000;
