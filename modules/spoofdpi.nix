@@ -1,3 +1,4 @@
 {
-  enable = true;
+  enable = false;
+  extraArgs = [ "--system-proxy" ];
 }

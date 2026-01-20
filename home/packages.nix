@@ -20,7 +20,7 @@ with pkgs;
   sd
   procs
   ripgrep
-  semgrep
+  # semgrep # temporarily disabled due to broken mcp dependency
   dua
   fzf
   delta
@@ -39,6 +39,8 @@ with pkgs;
   pay-respects
   uv
   syncthing
+  typst
+  unison-ucm
 
   devenv
 
@@ -50,6 +52,7 @@ with pkgs;
   lazydocker
   btop
   jq
+  jj
   jless
   postgresql
   numbat

@@ -21,12 +21,14 @@
     editc = "nvim ~/.config/nix";
     ee = "nvim ~/.config/nix";
     update = "sudo darwin-rebuild switch --flake ~/.config/nix#tim";
-    dlp = "yt-dlp --no-mtime";
+    dlp = "yt-dlp --no-mtime --cookies-from-browser brave";
     # port forwarding from my local cluster cuz who wants to install mongodb locally
     mongodb = "kubectl port-forward -n offload svc/mongodb 27017 27017";
   };
   shellInit = ''
     set -U fish_greeting
     /opt/homebrew/bin/brew shellenv | source
+    fish_vi_key_bindings
+    bind ctrl-f accept-autosuggestion
   '';
 }

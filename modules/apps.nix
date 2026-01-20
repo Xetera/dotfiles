@@ -24,24 +24,6 @@
     nil
   ];
 
-  # launchd.user.agents = {
-  #   syncthing = {
-  #     serviceConfig = {
-  #       ProgramArguments = [
-  #         "${pkgs.syncthing}/bin/syncthing"
-  #         "-no-browser"
-  #         "-no-restart"
-  #         "-home=/Users/xetera/.config/syncthing"
-  #       ];
-  #       KeepAlive = true;
-  #       RunAtLoad = true;
-  #       ProcessType = "Background";
-  #       StandardOutPath = "/Users/xetera/.local/share/syncthing/stdout.log";
-  #       StandardErrorPath = "/Users/xetera/.local/share/syncthing/stderr.log";
-  #     };
-  #   };
-  # };
-
   programs.fish.enable = true;
 
   fonts.packages = [

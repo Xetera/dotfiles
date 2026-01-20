@@ -8,6 +8,9 @@
       "android" = {
         id = "3XF6A5F-CYLDFAV-O7TJGYF-44BWU66-SX4RSXZ-752G362-SCYCF5X-6XJFMAU";
       };
+      "desktop" = {
+        id = "W77D7LI-6OJPLM3-UJQTVD3-NKH6YMA-SMAHO5L-VIILGIS-YLCXMOL-QTZMQQK";
+      };
     };
     folders = {
       "obsidian" = {
@@ -16,6 +19,11 @@
         fsWatcherEnabled = true;
         rescanIntervalS = 5;
         path = "/Users/xetera/Obsidian";
+        devices = [ "android" ];
+      };
+      "backups" = {
+        id = "backups";
+        path = "/Users/xetera/backups";
         devices = [ "android" ];
       };
     };

@@ -8,6 +8,7 @@
       name = gitName;
       email = "contact@xetera.dev";
     };
+    push.useForceIfIncludes = true;
     pull.rebase = true;
     # needed for some bigger clones
     http.postBuffer = 524288000;

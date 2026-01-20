@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  hostname,
+  username,
+  ...
+}:
 ###################################################################################
 #
 #  macOS's System configuration
@@ -9,6 +14,8 @@
 ###################################################################################
 {
   networking = {
+    hostName = hostname;
+    computerName = hostname;
     dns = [
       "100.100.100.100"
       "10.0.0.1"
@@ -37,10 +44,10 @@
 
     defaults = {
       menuExtraClock.Show24Hour = true; # show 24 hour clock
+      smb.NetBIOSName = hostname;
 
       # other macOS's defaults configuration.
       # ......
-
       dock = {
         autohide = true;
         mru-spaces = false;
@@ -52,6 +59,9 @@
         QuitMenuItem = true;
         FXEnableExtensionChangeWarning = false;
       };
+      screencapture = {
+        type = "jpg";
+      };
 
       trackpad = {
         Clicking = true;
@@ -62,9 +72,10 @@
   };
 
   programs.fish.enable = true;
-  users.users.xetera = {
-    home = "/Users/xetera";
+  users.users.${username} = {
+    home = "/Users/${username}";
     shell = pkgs.fish;
   };
+  nix.settings.trusted-users = [ username ];
   environment.shells = [ pkgs.fish ];
 }
