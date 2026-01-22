@@ -23,6 +23,7 @@ in
     pkg:
     builtins.elem (lib.getName pkg) [
       "1password-cli"
+      "claude-code"
     ];
   imports = [ inputs._1password-shell-plugins.hmModules.default ];
 
@@ -64,6 +65,7 @@ in
       inherit gitName;
       inherit gitEmail;
     };
+    claude-code = import ./claude.nix;
     _1password-shell-plugins = {
       enable = true;
       plugins = with pkgs; [ gh ];
