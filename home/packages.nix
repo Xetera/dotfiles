@@ -11,76 +11,58 @@ let
 in
 with pkgs;
 [
-  pkgsUnfree.obsidian
-  ## tooling ##
-  eza
-  bat
-  tokei
-  fd
-  sd
-  procs
-  ripgrep
-  # semgrep # temporarily disabled due to broken mcp dependency
-  dua
-  fzf
-  delta
-  docker
-  hexyl
-  yt-dlp
-  trippy
-  stripe-cli
-  zoxide
-  wezterm
-  posting
-  kubecolor
-  k9s
-  spotify-player
-  yaak
-  pay-respects
-  uv
-  syncthing
-  typst
-  unison-ucm
-
-  devenv
-
-  ## hacking ##
-  # apkleaks
-
-  ## productivity ##
-  lazygit
-  lazydocker
-  btop
-  jq
-  jujutsu
-  jless
-  postgresql
-  numbat
-  glances
-  dive
-
-  ## network ##
-  #wireshark # -> installed in homebrew
-  nmap
-  tcpreplay
-
-  ## VA ##
-  ffmpeg
-  # vlc unsupported?
-  audacity
-
-  ## developer setup ##
-  fishPlugins.nvm
-  git
-  neovim
   antidote
-  pnpm
+  audacity
+  bat
+  btop
+  delta
+  devenv
+  dive
+  docker
+  dua
   elixir
   erlang
-  zig
-  # zed-editor broken for now
-
-  # misc
+  eza
+  fd
+  ffmpeg
+  fishPlugins.nvm
+  fzf
+  git
+  glances
+  hexyl
+  jless
+  jq
+  jujutsu
+  k9s
+  kubecolor
+  lazydocker
+  lazygit
+  neovim
   nixfmt-rfc-style
+  nmap
+  numbat
+  pay-respects
+  pnpm
+  postgresql
+  posting
+  procs
   restic
+  ripgrep
+  sd
+  spotify-player
+  stripe-cli
+  syncthing
+  tcpreplay
+  tokei
+  trippy
+  typst
+  unison-ucm
+  uv
+  wezterm
+  yaak
+  yt-dlp
+  zig
+  zoxide
+  # unfree
+  pkgsUnfree.obsidian
 ]
