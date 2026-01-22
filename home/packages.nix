@@ -52,7 +52,7 @@ with pkgs;
   lazydocker
   btop
   jq
-  jj
+  jujutsu
   jless
   postgresql
   numbat

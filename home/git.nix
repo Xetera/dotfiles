@@ -1,4 +1,4 @@
-{ gitName, pkgs }:
+{ gitName, gitEmail, pkgs }:
 {
   enable = true;
   signing.key = "82B477CACDA27E1E756273A09852FA374C75F6FD";
@@ -6,7 +6,7 @@
   settings = {
     user = {
       name = gitName;
-      email = "contact@xetera.dev";
+      email = gitEmail;
     };
     push.useForceIfIncludes = true;
     pull.rebase = true;

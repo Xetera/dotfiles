@@ -6,6 +6,7 @@
 }:
 let
   gitName = "Xetera";
+  gitEmail = "contact@xetera.dev";
 in
 {
   home = {
@@ -56,8 +57,13 @@ in
       import ./git.nix {
         inherit pkgs;
         inherit gitName;
+        inherit gitEmail;
       }
     );
+    jujutsu = import ./jujutsu.nix {
+      inherit gitName;
+      inherit gitEmail;
+    };
     _1password-shell-plugins = {
       enable = true;
       plugins = with pkgs; [ gh ];
