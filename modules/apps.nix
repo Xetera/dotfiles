@@ -64,7 +64,6 @@
       "background-music"
       "font-monaspace"
       "font-sf-mono-nerd-font"
-      "claude-code"
     ];
   };
 }
