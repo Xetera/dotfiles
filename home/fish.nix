@@ -30,5 +30,7 @@
     /opt/homebrew/bin/brew shellenv | source
     fish_vi_key_bindings
     bind ctrl-f accept-autosuggestion
+    bind ctrl-j history-search-backward
+    bind ctrl-k history-search-forward
   '';
 }
