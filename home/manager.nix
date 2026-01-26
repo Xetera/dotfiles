@@ -52,6 +52,7 @@ in
         inherit gitName;
       }
     );
+    opencode = import ./opencode.nix;
     wezterm = import ./wezterm.nix;
     alacritty = import ./alacritty.nix;
     git = (

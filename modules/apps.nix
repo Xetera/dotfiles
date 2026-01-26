@@ -52,6 +52,7 @@
       "mas"
       "nebula"
       "syncthing"
+      "anomalyco/tap/opencode"
     ];
 
     # `brew install --cask`
