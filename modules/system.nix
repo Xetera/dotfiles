@@ -33,6 +33,7 @@
   services.yabai = import ./yabai.nix;
   services.skhd = (import ./skhd.nix { inherit pkgs; });
   services.spoofdpi = import ./spoofdpi.nix;
+  services.localproxy = import ./localproxy.nix;
 
   system = {
     stateVersion = 5;

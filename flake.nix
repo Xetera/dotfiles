@@ -66,6 +66,7 @@
           ./modules/apps.nix
           ./modules/system.nix
           ./modules/spoofdpi-service.nix
+          ./modules/localproxy-service.nix
           {
             nixpkgs.overlays = [ unison-lang.overlay ];
           }
