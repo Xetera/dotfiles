@@ -1,5 +1,5 @@
 {
-  enable = true;
+  enable = false;
   httpsRedirect = true;
-  watch = ["~/projects"];
+  watch = [ "~/projects" ];
 }

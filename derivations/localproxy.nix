@@ -7,14 +7,13 @@ pkgs.buildGoModule {
   pname = "localproxy";
   version = "0.0.1";
 
-  src = pkgs.fetchFromGitHub {
-    owner = "xetera";
-    repo = "localproxy";
-    rev = "main";
-    sha256 = "sha256-w5dNM63rAIMQSG+q+a+W+beF7wzVv5jsKvSzes/tVfU=";
+  src = fetchGit {
+    url = "https://github.com/xetera/localproxy";
+    ref = "main";
+    rev = "2c3b40422942d51673cc87ea5d549c33c8937989";
   };
 
-  vendorHash = "sha256-RTXxybQ5oykQhBNrhMnW0KP9XXtedk/8OoRMS6jf/gs=";
+  vendorHash = "sha256-QOsy6PlqLmO6YU0ybgyfIYDkPKc1hTC4UJukYJqZ6/0=";
 
   nativeBuildInputs = [ pkgs.makeWrapper ];
   buildInputs = with pkgs; [

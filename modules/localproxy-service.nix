@@ -11,7 +11,7 @@ in
     enable = mkEnableOption "localproxy - Turn random port numbers into .localhost domains";
 
     watch = mkOption {
-      type = types.arrayOf types.str;
+      type = types.listOf types.str;
       description = "Folders to watch for local processes";
     };
 
@@ -41,7 +41,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    launchd.user.agents.localproxy = {
+    launchd.daemons.localproxy = {
       serviceConfig = {
         ProgramArguments = [
           "${localproxy}/bin/localproxyd"
@@ -56,6 +56,9 @@ in
 
         KeepAlive = true;
         RunAtLoad = true;
+        EnvironmentVariables = {
+          HOME = "/Users/xetera";
+        };
         StandardErrorPath = "/tmp/localproxy.err";
         StandardOutPath = "/tmp/localproxy.out";
       };
