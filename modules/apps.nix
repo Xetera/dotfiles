@@ -57,7 +57,7 @@
     # TODO Feel free to add your favorite apps here.
     casks = [
       "libreoffice"
-      "wireshark"
+      "wireshark-app"
       "raycast"
       "zed@preview"
       "background-music"
