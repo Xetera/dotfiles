@@ -73,6 +73,8 @@
   };
 
   programs.fish.enable = true;
+  programs.ssh = import ./ssh.nix;
+
   users.users.${username} = {
     home = "/Users/${username}";
     shell = pkgs.fish;
