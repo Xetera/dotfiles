@@ -1,4 +1,4 @@
 {
-  enable = true;
-  rules = (import ./rules.nix).text;
+  enable = false;
+  rules = (import ./ai-rules.nix).text;
 }

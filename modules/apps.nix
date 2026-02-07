@@ -24,8 +24,6 @@
     nil
   ];
 
-  programs.fish.enable = true;
-
   fonts.packages = [
     pkgs.nerd-fonts.jetbrains-mono
   ];

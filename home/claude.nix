@@ -1,4 +1,4 @@
-let rules = import ./rules.nix;
+let rules = import ./ai-rules.nix;
 in
 {
   enable = true;

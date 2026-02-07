@@ -52,6 +52,7 @@ with pkgs;
   spotify-player
   stripe-cli
   syncthing
+  tabiew
   tcpreplay
   tokei
   trippy
