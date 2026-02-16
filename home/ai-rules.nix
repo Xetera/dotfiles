@@ -12,5 +12,6 @@
     Do not use emojis.
     Do not explain basic concepts.
     Always include links to documentation or resources when making a claim if possible.
+    Do not delete or reword existing code comments unless it no longer describes the implementation correctly.
   '';
 }
