@@ -5,6 +5,7 @@
     Do not give me a meta-summary of why something I'm doing is a good idea or why what it's normally used for.
     Never include comments when writing code.
     Never use wording like "it's not x, it's y".
+    Never use wording like "no x, no y, just z"
     Do not include headings to your explanation.
     Do not summarize the work you've done after completing a task.
     Do not write documentation.
