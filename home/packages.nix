@@ -20,6 +20,7 @@ with pkgs;
   dive
   docker
   dua
+  dust
   elixir
   erlang
   eza

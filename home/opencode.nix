@@ -1,4 +1,4 @@
 {
   enable = false;
-  rules = (import ./ai-rules.nix).text;
+  context = (import ./ai-rules.nix).text;
 }

@@ -33,6 +33,13 @@ config.scrollback_lines = 100000
 config.color_scheme = scheme_for_appearance(appearance)
 config.window_decorations = "RESIZE"
 
+-- Match your monitor's refresh rate (e.g., 120 for ProMotion)
+config.max_fps = 120
+
+-- Disable unnecessary ligatures and complex shaping if not needed
+-- This reduces the CPU time spent on HarfBuzz text shaping
+config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
+
 local function window_frame(app)
   local sky = "#04a5e5"
   local peach = "#5b6078"

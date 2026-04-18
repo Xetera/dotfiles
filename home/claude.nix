@@ -1,4 +1,5 @@
-let rules = import ./ai-rules.nix;
+let
+  rules = import ./ai-rules.nix;
 in
 {
   enable = true;
@@ -10,6 +11,7 @@ in
       allow = [
         "Read"
         "Glob"
+        "Search"
         "Bash(docker logs *)"
         "Bash(go mod init *)"
         "Bash(go get *)"
@@ -38,7 +40,5 @@ in
       ];
     };
   };
-  memory = {
-    text = rules.text;
-  };
+  context = rules.text;
 }
