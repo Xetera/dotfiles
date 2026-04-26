@@ -41,4 +41,8 @@ in
     };
   };
   context = rules.text;
+  skills = {
+    grill-me = import ./skills/grill-me.md;
+    veld-review = import ./skills/veld-review.md;
+  };
 }
