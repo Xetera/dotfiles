@@ -42,6 +42,7 @@
     };
 
     taps = [
+      "domcyrus/rustnet"
     ];
 
     # `brew install`
@@ -51,6 +52,7 @@
       "nebula"
       "syncthing"
       "anomalyco/tap/opencode"
+      "domcyrus/rustnet/rustnet"
     ];
 
     # `brew install --cask`

@@ -4,6 +4,7 @@ in
 {
   enable = true;
   settings = {
+    theme = "auto";
     alwaysThinkingEnabled = false;
     promptSuggestionEnabled = false;
     permissions = {
@@ -29,6 +30,7 @@ in
         "Bash(netstat *)"
         "Bash(ifconfig *)"
         "Bash(ping *)"
+        "Bash(pnpm *)"
         "Bash(type *)"
         "Bash(find *)"
       ];
@@ -42,7 +44,7 @@ in
   };
   context = rules.text;
   skills = {
-    grill-me = import ./skills/grill-me.md;
-    veld-review = import ./skills/veld-review.md;
+    grill-me = builtins.readFile ./skills/grill-me.md;
+    veld-review = builtins.readFile ./skills/veld-review.md;
   };
 }

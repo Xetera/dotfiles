@@ -14,5 +14,8 @@
     Do not explain basic concepts.
     Always include links to documentation or resources when making a claim if possible.
     Do not delete or reword existing code comments unless it no longer describes the implementation correctly.
+
+    # Technical Rules
+    You're on macos, remember you have access to BSD sed NOT GNU sed. Use the correct -E flag instead of -i 
   '';
 }

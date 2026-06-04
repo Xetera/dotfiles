@@ -10,6 +10,17 @@
     try = "nix run nixpkgs.";
     "?" = "erd -H -L 2";
   };
+  functions = {
+    dotnet = {
+      body = ''
+        if test "$argv[1]" = "install"
+          command dotnet restore $argv[2..]
+        else
+          command dotnet $argv
+        end
+      '';
+    };
+  };
   shellAbbrs = {
     ".." = "z ..";
     "..." = "z ../..";
@@ -32,8 +43,10 @@
     bind ctrl-f accept-autosuggestion
     bind ctrl-j history-search-backward
     bind ctrl-k history-search-forward
-    set -gx DOTNET_ROOT ~/dotnet
-    set -gpx PATH ~/dotnet
+    set -gx BUN_INSTALL "$HOME/.bun"
+    fish_add_path $BUN_INSTALL/bin
+    fish_add_path $HOME/.local/bin
+    set -x DOTNET_ROOT /usr/local/share/dotnet
     # BEGIN opam configuration
     # This is useful if you're using opam as it adds:
     #   - the correct directories to the PATH

@@ -39,7 +39,7 @@ with pkgs;
   lazydocker
   lazygit
   neovim
-  nixfmt-rfc-style
+  nixfmt
   nmap
   numbat
   pay-respects
@@ -53,12 +53,10 @@ with pkgs;
   spotify-player
   stripe-cli
   syncthing
-  tabiew
   tcpreplay
   tokei
   trippy
   typst
-  unison-ucm
   uv
   wezterm
   yaak

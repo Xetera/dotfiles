@@ -1,4 +1,8 @@
-{ gitName, gitEmail, pkgs }:
+{
+  gitName,
+  gitEmail,
+  pkgs,
+}:
 {
   enable = true;
   signing.key = "82B477CACDA27E1E756273A09852FA374C75F6FD";
@@ -21,8 +25,8 @@
       hyperlinks = true;
       whitespace-error-style = "22 reverse";
     };
-    core.pager = "${pkgs.delta}/bin/delta --color-only $(defaults read -g AppleInterfaceStyle &>/dev/null || echo --light)";
-    interactive.diffFilter = "${pkgs.delta}/bin/delta --color-only $(defaults read -g AppleInterfaceStyle &>/dev/null || echo --light)";
+    core.pager = "${pkgs.delta}/bin/delta --features $(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo dark-mode || echo light-mode)";
+    interactive.diffFilter = "${pkgs.delta}/bin/delta --features $(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo dark-mode || echo light-mode)";
     diff.algorithm = "histogram";
     diff.colorMoved = "default";
 

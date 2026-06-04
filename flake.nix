@@ -29,10 +29,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-topology.url = "github:oddlama/nix-topology";
-    unison-lang = {
-      url = "github:ceedubs/unison-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   # The `outputs` function will return all the build results of the flake.
@@ -46,7 +42,6 @@
       nixpkgs,
       nix-darwin,
       home-manager,
-      unison-lang,
       ...
     }:
     let
@@ -62,18 +57,31 @@
       darwinConfigurations."${hostname}" = nix-darwin.lib.darwinSystem {
         inherit system specialArgs;
         modules = [
+          {
+            nixpkgs.overlays = [
+              (final: prev: {
+                direnv = prev.direnv.overrideAttrs { doCheck = false; };
+              })
+            ];
+          }
           ./modules/nix-core.nix
           ./modules/apps.nix
           ./modules/system.nix
           ./modules/spoofdpi-service.nix
           ./modules/localproxy-service.nix
-          {
-            nixpkgs.overlays = [ unison-lang.overlay ];
-          }
           home-manager.darwinModules.home-manager
           {
             home-manager = {
               extraSpecialArgs = { inherit inputs; };
+              sharedModules = [
+                {
+                  nixpkgs.overlays = [
+                    (final: prev: {
+                      direnv = prev.direnv.overrideAttrs { doCheck = false; };
+                    })
+                  ];
+                }
+              ];
               users.${username} = import ./home/manager.nix;
             };
           }
