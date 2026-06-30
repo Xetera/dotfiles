@@ -29,7 +29,12 @@ in
   imports = [ inputs._1password-shell-plugins.hmModules.default ];
 
   services.syncthing = import ./syncthing.nix;
+  services.gpg-agent = {
+    enable = true;
+    pinentry.package = pkgs.pinentry_mac;
+  };
   programs = {
+    gpg.enable = true;
     direnv = {
       enable = true;
       silent = true;

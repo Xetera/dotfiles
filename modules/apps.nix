@@ -66,7 +66,7 @@
       "background-music"
       "helium-browser"
       "font-monaspace"
-      "font-sf-mono-nerd-font"
+      "font-sf-mono-nerd-font-ligaturized"
     ];
   };
 }

@@ -29,6 +29,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-topology.url = "github:oddlama/nix-topology";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # The `outputs` function will return all the build results of the flake.
@@ -42,6 +46,7 @@
       nixpkgs,
       nix-darwin,
       home-manager,
+      sops-nix,
       ...
     }:
     let
@@ -69,6 +74,10 @@
           ./modules/system.nix
           ./modules/spoofdpi-service.nix
           ./modules/localproxy-service.nix
+          sops-nix.darwinModules.sops
+          ./modules/amnezia.nix
+          ./modules/raycast.nix
+          ./modules/gpg-signing.nix
           home-manager.darwinModules.home-manager
           {
             home-manager = {

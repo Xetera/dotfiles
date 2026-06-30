@@ -1,3 +1,9 @@
 result
 result/
 .DS_Store
+
+# never commit age/sops private keys or decrypted secrets
+keys.txt
+*.age
+secrets/*.dec.*
+secrets/*.plain.*

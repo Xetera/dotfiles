@@ -12,7 +12,6 @@ in
 with pkgs;
 [
   antidote
-  audacity
   bat
   btop
   delta
@@ -66,6 +65,7 @@ with pkgs;
   zoxide
   # runtimes / dev toolchains
   rustup
+  jdk
   # android
   android-tools
   # unfree

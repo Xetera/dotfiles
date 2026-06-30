@@ -74,10 +74,18 @@
 
   programs.fish.enable = true;
 
+  users.knownUsers = [ username ];
   users.users.${username} = {
+    uid = 501;
+    gid = 20;
     home = "/Users/${username}";
     shell = pkgs.fish;
   };
   nix.settings.trusted-users = [ username ];
+  nix.settings.extra-experimental-features = [ "nix-command" "flakes" ];
   environment.shells = [ pkgs.fish ];
+
+  sops.age.keyFile = "/Users/${username}/.config/sops/age/keys.txt";
+  # re-enable once secrets/amnezia.yaml exists (age key + sops secret created)
+  services.amneziawg.enable = false;
 }
