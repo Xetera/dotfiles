@@ -92,6 +92,5 @@
   environment.shells = [ pkgs.fish ];
 
   sops.age.keyFile = "/Users/${username}/.config/sops/age/keys.txt";
-  # re-enable once secrets/amnezia.yaml exists (age key + sops secret created)
-  services.amneziawg.enable = false;
+  services.amneziawg.enable = true;
 }
