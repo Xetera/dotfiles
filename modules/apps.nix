@@ -59,6 +59,7 @@
     # TODO Feel free to add your favorite apps here.
     casks = [
       "discord"
+      "fastmail"
       "libreoffice"
       "orbstack"
       "wireshark-app"

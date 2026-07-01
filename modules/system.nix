@@ -13,6 +13,12 @@
 #
 ###################################################################################
 {
+  system.keyboard = {
+    enableKeyMapping = true;
+    remapCapsLockToEscape = true;
+    nonUS.remapTilde = true;
+  };
+
   networking = {
     hostName = hostname;
     computerName = hostname;
