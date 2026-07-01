@@ -5,7 +5,14 @@ with lib;
 let
   cfg = config.services.amneziawg;
   configPath = config.sops.secrets."amnezia/awg0.conf".path;
-  runtimePackages = [ pkgs.amneziawg-tools pkgs.amneziawg-go pkgs.bash ];
+  # awg-quick calls the standard `wg` binary internally (upstream packaging quirk),
+  # but amnezia configs use obfuscation keys (Jc/S1/S2) that only `awg` understands,
+  # so alias wg -> awg on the runtime PATH.
+  wgCompat = pkgs.runCommand "awg-wg-compat" { } ''
+    mkdir -p $out/bin
+    ln -s ${pkgs.amneziawg-tools}/bin/awg $out/bin/wg
+  '';
+  runtimePackages = [ wgCompat pkgs.amneziawg-tools pkgs.amneziawg-go pkgs.bash ];
 in
 {
   options.services.amneziawg = {
