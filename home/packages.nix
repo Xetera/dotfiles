@@ -42,7 +42,6 @@ with pkgs;
   nixfmt
   nmap
   numbat
-  pay-respects
   pnpm
   postgresql
   posting

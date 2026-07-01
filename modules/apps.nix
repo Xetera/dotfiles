@@ -58,6 +58,7 @@
     # `brew install --cask`
     # TODO Feel free to add your favorite apps here.
     casks = [
+      "discord"
       "libreoffice"
       "orbstack"
       "wireshark-app"
