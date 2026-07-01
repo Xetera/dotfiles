@@ -59,6 +59,8 @@
     # TODO Feel free to add your favorite apps here.
     casks = [
       "discord"
+      "slack"
+      "whatsapp"
       "fastmail"
       "libreoffice"
       "orbstack"
@@ -70,5 +72,9 @@
       "font-monaspace"
       "font-sf-mono-nerd-font-ligaturized"
     ];
+
+    masApps = {
+      "Infuse" = 1136220934;
+    };
   };
 }
