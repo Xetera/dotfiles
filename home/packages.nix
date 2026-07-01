@@ -21,14 +21,15 @@ with pkgs;
   docker
   dua
   dust
-  elixir
-  erlang
+  beamPackages.elixir
+  beamPackages.erlang
   eza
   fd
   ffmpeg
   fishPlugins.nvm
   fzf
   git
+  go
   glances
   hexyl
   jless
@@ -63,6 +64,10 @@ with pkgs;
   yt-dlp
   zig
   zoxide
+  # runtimes / dev toolchains
+  rustup
+  # android
+  android-tools
   # unfree
   pkgsUnfree.obsidian
 ]

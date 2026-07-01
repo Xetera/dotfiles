@@ -5,6 +5,7 @@ in
   enable = true;
   settings = {
     theme = "auto";
+    tui = "fullscreen";
     alwaysThinkingEnabled = false;
     promptSuggestionEnabled = false;
     permissions = {

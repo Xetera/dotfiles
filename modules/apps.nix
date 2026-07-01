@@ -59,10 +59,12 @@
     # TODO Feel free to add your favorite apps here.
     casks = [
       "libreoffice"
+      "orbstack"
       "wireshark-app"
       "raycast"
       "zed@preview"
       "background-music"
+      "helium-browser"
       "font-monaspace"
       "font-sf-mono-nerd-font"
     ];

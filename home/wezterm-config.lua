@@ -21,7 +21,31 @@ local function scheme_for_appearance(app)
 end
 
 local config = wezterm.config_builder()
-bar.apply_to_config(config)
+bar.apply_to_config(config, {
+  modules = {
+    pane = {
+      enabled = false
+    },
+    workspace = {
+      enabled = true
+    },
+    leader = {
+      enabled = false
+    },
+    ssh = {
+      enabled = true
+    },
+    spotify = {
+      enabled = true
+    },
+    separator = {
+      space = 2,
+      left_icon = "",
+      right_icon = "",
+      field_icon = ""
+    }
+  }
+})
 
 config.initial_cols = 120
 config.initial_rows = 28

@@ -68,6 +68,7 @@ in
       inherit gitEmail;
     };
     claude-code = import ./claude.nix;
+    ssh = import ../modules/ssh.nix;
     _1password-shell-plugins = {
       enable = true;
       plugins = with pkgs; [ gh ];

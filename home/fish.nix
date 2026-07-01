@@ -47,6 +47,7 @@
     fish_add_path $BUN_INSTALL/bin
     fish_add_path $HOME/.local/bin
     set -x DOTNET_ROOT /usr/local/share/dotnet
+    set -gx JAVA_HOME (/usr/libexec/java_home -v 17)
     # BEGIN opam configuration
     # This is useful if you're using opam as it adds:
     #   - the correct directories to the PATH
