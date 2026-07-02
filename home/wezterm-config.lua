@@ -50,12 +50,24 @@ bar.apply_to_config(config, {
 config.initial_cols = 120
 config.initial_rows = 28
 
-local appearance = get_appearance()
 config.font_size = 14
 config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
 config.scrollback_lines = 100000
-config.color_scheme = scheme_for_appearance(appearance)
+config.color_scheme = scheme_for_appearance(get_appearance())
 config.window_decorations = "RESIZE"
+
+wezterm.on("window-config-reloaded", function(window, pane)
+  local overrides = window:get_config_overrides() or {}
+  local scheme = scheme_for_appearance(window:get_appearance())
+  if overrides.color_scheme ~= scheme then
+    overrides.color_scheme = scheme
+    local palette = wezterm.color.get_builtin_schemes()[scheme]
+    overrides.colors = overrides.colors or {}
+    overrides.colors.background = palette.background
+    overrides.colors.foreground = palette.foreground
+    window:set_config_overrides(overrides)
+  end
+end)
 
 -- Match your monitor's refresh rate (e.g., 120 for ProMotion)
 config.max_fps = 120
