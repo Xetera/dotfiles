@@ -32,6 +32,9 @@
     editc = "nvim /etc/nix-darwin";
     ee = "nvim /etc/nix-darwin";
     update = "sudo darwin-rebuild switch --flake /etc/nix-darwin#tim";
+    awg = "sudo awg";
+    awgup = "sudo awg-quick up /etc/amneziawg/awg0.conf";
+    awgdown = "sudo awg-quick down /etc/amneziawg/awg0.conf";
     dlp = "yt-dlp --no-mtime --cookies-from-browser brave";
     # port forwarding from my local cluster cuz who wants to install mongodb locally
     mongodb = "kubectl port-forward -n offload svc/mongodb 27017 27017";
