@@ -1,3 +1,4 @@
+{ username }:
 {
   enable = true;
   overrideDevices = true;
@@ -18,12 +19,12 @@
         # syncthing filewatcher does not work on fucking macos for some reason
         fsWatcherEnabled = true;
         rescanIntervalS = 5;
-        path = "/Users/xetera/Obsidian";
+        path = "/Users/${username}/Obsidian";
         devices = [ "android" ];
       };
       "backups" = {
         id = "backups";
-        path = "/Users/xetera/backups";
+        path = "/Users/${username}/backups";
         devices = [ "android" ];
       };
     };
