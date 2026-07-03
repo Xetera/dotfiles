@@ -50,53 +50,71 @@
       ...
     }:
     let
-      username = "xetera";
-      system = "aarch64-darwin";
-      hostname = "tim";
-
-      specialArgs = inputs // {
-        inherit username hostname;
+      # One entry per machine. `hostname` is derived from the attr name, so the
+      # key here is the value you pass to `--flake .#<hostname>`.
+      hosts = {
+        tim = {
+          username = "xetera";
+          system = "aarch64-darwin";
+        };
+        ada = {
+          username = "xetera";
+          system = "aarch64-darwin";
+        };
       };
+
+      mkHost =
+        hostname:
+        {
+          username,
+          system,
+        }:
+        let
+          specialArgs = inputs // {
+            inherit username hostname;
+          };
+        in
+        nix-darwin.lib.darwinSystem {
+          inherit system specialArgs;
+          modules = [
+            {
+              nixpkgs.overlays = [
+                (final: prev: {
+                  direnv = prev.direnv.overrideAttrs { doCheck = false; };
+                })
+              ];
+            }
+            ./modules/nix-core.nix
+            ./modules/apps.nix
+            ./modules/system.nix
+            ./modules/spoofdpi-service.nix
+            ./modules/localproxy-service.nix
+            sops-nix.darwinModules.sops
+            ./modules/amnezia.nix
+            ./modules/raycast.nix
+            ./modules/gpg-signing.nix
+            home-manager.darwinModules.home-manager
+            {
+              home-manager = {
+                extraSpecialArgs = { inherit inputs username; };
+                sharedModules = [
+                  {
+                    nixpkgs.overlays = [
+                      (final: prev: {
+                        direnv = prev.direnv.overrideAttrs { doCheck = false; };
+                      })
+                    ];
+                  }
+                ];
+                users.${username} = import ./home/manager.nix;
+              };
+            }
+          ];
+        };
     in
     {
-      darwinConfigurations."${hostname}" = nix-darwin.lib.darwinSystem {
-        inherit system specialArgs;
-        modules = [
-          {
-            nixpkgs.overlays = [
-              (final: prev: {
-                direnv = prev.direnv.overrideAttrs { doCheck = false; };
-              })
-            ];
-          }
-          ./modules/nix-core.nix
-          ./modules/apps.nix
-          ./modules/system.nix
-          ./modules/spoofdpi-service.nix
-          ./modules/localproxy-service.nix
-          sops-nix.darwinModules.sops
-          ./modules/amnezia.nix
-          ./modules/raycast.nix
-          ./modules/gpg-signing.nix
-          home-manager.darwinModules.home-manager
-          {
-            home-manager = {
-              extraSpecialArgs = { inherit inputs; };
-              sharedModules = [
-                {
-                  nixpkgs.overlays = [
-                    (final: prev: {
-                      direnv = prev.direnv.overrideAttrs { doCheck = false; };
-                    })
-                  ];
-                }
-              ];
-              users.${username} = import ./home/manager.nix;
-            };
-          }
-        ];
-      };
+      darwinConfigurations = builtins.mapAttrs mkHost hosts;
       # nix code formatter
-      formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
+      formatter."aarch64-darwin" = nixpkgs.legacyPackages."aarch64-darwin".alejandra;
     };
 }

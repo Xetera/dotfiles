@@ -28,7 +28,7 @@
     pkgs.nerd-fonts.jetbrains-mono
   ];
 
-  # services.tailscale.enable = true;
+  services.tailscale.enable = true;
 
   # TODO To make this work, homebrew need to be installed manually, see https://brew.sh
   #

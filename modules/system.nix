@@ -22,18 +22,10 @@
   networking = {
     hostName = hostname;
     computerName = hostname;
-    dns = [
-      "100.100.100.100"
-      "10.0.0.1"
-      # in case something goes wrong with dns
-      "1.1.1.1"
-    ];
     knownNetworkServices = [
       "Wi-Fi"
-      "Bluetooth PAN"
       "Thunderbolt Bridge"
-      "NextDNS"
-      "Tailscale Tunnel"
+      "USB 10/100 LAN"
     ];
   };
   services.yabai = import ./yabai.nix;
@@ -52,6 +44,10 @@
     defaults = {
       menuExtraClock.Show24Hour = true; # show 24 hour clock
       smb.NetBIOSName = hostname;
+
+      # -1 disables pointer acceleration
+      ".GlobalPreferences"."com.apple.mouse.scaling" = -1.0;
+      ".GlobalPreferences"."com.apple.trackpad.scaling" = -1.0;
 
       # other macOS's defaults configuration.
       # ......
